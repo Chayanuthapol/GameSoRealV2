@@ -7,7 +7,10 @@ public class Ball : MonoBehaviour
 {
     public Rigidbody rb;
     public bool isMoving;
-
+    public Transform cue;                  // ตัวไม้คิว
+    public Ball ball;                      // ลูกบอล
+    public LineRenderer aimLineRenderer; 
+    public float ballStopThreshold = 0.5f;// LineRenderer สำหรับเส้นทิศทาง
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -17,25 +20,42 @@ public class Ball : MonoBehaviour
     {
         // Check if the ball is moving
         isMoving = rb.velocity.magnitude > 0.1f;
-        if (!isMoving)
+        if (rb.velocity.magnitude > ballStopThreshold)
         {
-            Debug.Log("not move");
+            isMoving = true;
         }
+        else
+        {
+            isMoving = false;
+        }
+
+        if (isMoving)
+        {
+            HideCue();
+        }
+        else if (!isMoving)
+        {
+            ShowCue();
+        }
+        Debug.Log(rb.velocity.magnitude);
     }
 
     // Apply force to hit the ball
     public void Hit(Vector3 force)
     {
         rb.AddForce(force, ForceMode.Impulse);
-        Debug.Log(isMoving);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void HideCue()
     {
-        //if (rb.detectCollisions)
-        //{
-          //  Hit(Vector3.forward);
-        //}
+        cue.gameObject.SetActive(false); // ซ่อนไม้คิว
+        aimLineRenderer.enabled = false;
+    }
+
+    private void ShowCue()
+    {
+        cue.gameObject.SetActive(true); // แสดงไม้คิว
+        aimLineRenderer.enabled = true; // เปิดใช้งานเส้นทิศทางอีกครั้ง
     }
 }
 
