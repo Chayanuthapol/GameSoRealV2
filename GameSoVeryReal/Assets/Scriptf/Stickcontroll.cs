@@ -4,15 +4,15 @@ using UnityEngine.UI;
 
 public class StickController : MonoBehaviour
 {
-    public Transform cue;                  // ตัวไม้คิว
-    public Ball ball;                      // ลูกบอล
-    public Camera mainCamera;              // กล้องหลัก
-    public float followDistance;    //ระยะกล้อง
-    public Slider powerSlider;             // Slider สำหรับปรับค่าแรง
-    public TextMeshProUGUI powerText;                 // Text สำหรับแสดงค่าความแรง
-    public LineRenderer aimLineRenderer;   // LineRenderer สำหรับเส้นทิศทาง
-    public float maxAimDistance = 5f;      // ระยะสูงสุดของเส้นทิศทาง
-    public float ballStopThreshold = 0.05f; // ค่าความเร็วที่ใช้ตรวจสอบว่าลูกบอลหยุดหรือไม่
+    public Transform cue; // ตัวไม้คิว
+    public Ball ball; // ลูกบอล
+    public Camera mainCamera; // กล้องหลัก
+    public float followDistance; //ระยะกล้อง
+    public Slider powerSlider; // Slider สำหรับปรับค่าแรง
+    public TextMeshProUGUI powerText; // Text สำหรับแสดงค่าความแรง
+    public LineRenderer aimLineRenderer; // LineRenderer สำหรับเส้นทิศทาง
+    public float maxAimDistance = 5f; // ระยะสูงสุดของเส้นทิศทาง
+
 
     private Vector3 hitDirection;
     private bool isBallMoving = false;
@@ -39,8 +39,8 @@ public class StickController : MonoBehaviour
                 }
             }
 
-            
-         
+
+
         }
     }
 
@@ -75,10 +75,7 @@ public class StickController : MonoBehaviour
     {
         // ตีลูกบอลไปในทิศทางที่ถูกเล็ง พร้อมกับแรงที่ปรับจาก Slider 
         ball.Hit(hitDirection * powerSlider.value);
-
-      
-      
     }
 
-    
+
 }

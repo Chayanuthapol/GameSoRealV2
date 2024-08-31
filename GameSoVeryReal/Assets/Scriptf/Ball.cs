@@ -11,9 +11,13 @@ public class Ball : MonoBehaviour
     public Ball ball;                      // ลูกบอล
     public LineRenderer aimLineRenderer; 
     public float ballStopThreshold = 0.5f;// LineRenderer สำหรับเส้นทิศทาง
+    
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        // หา BilliardsManager เพื่อเรียกใช้เมื่อลูกบอลลงหลุม
+        
     }
 
     private void Update()
@@ -37,7 +41,7 @@ public class Ball : MonoBehaviour
         {
             ShowCue();
         }
-        Debug.Log(rb.velocity.magnitude);
+        //Debug.Log(rb.velocity.magnitude);
     }
 
     // Apply force to hit the ball
