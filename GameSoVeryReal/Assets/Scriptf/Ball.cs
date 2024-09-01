@@ -10,7 +10,7 @@ public class Ball : MonoBehaviour
     public Transform cue;                  // ตัวไม้คิว
     public Ball ball;                      // ลูกบอล
     public LineRenderer aimLineRenderer; 
-    public float ballStopThreshold = 0.5f;// LineRenderer สำหรับเส้นทิศทาง
+    public float ballStopThreshold = 0.2f;
     
 
     private void Start()
