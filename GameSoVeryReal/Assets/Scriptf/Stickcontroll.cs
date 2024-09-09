@@ -14,6 +14,7 @@ public class StickController : MonoBehaviour
     public float maxAimDistance = 5f; // ระยะสูงสุดของเส้นทิศทาง
     public float powerChargeSpeed = 1f; // ความเร็วในการเพิ่มค่าความแรงของ Slider
     public ParticleSystem powerParticle; // พาร์ติเคิลที่จะแสดงเมื่อความแรงมากกว่า 0.7
+    private BilliardsManager BilliardsManager;
 
     private Vector3 hitDirection;
     private bool isBallMoving = false;
@@ -41,6 +42,7 @@ public class StickController : MonoBehaviour
                 ResetPower();
                 isChargingPower = false;
                 powerParticle.Stop(); // หยุดพาร์ติเคิลหลังจากตีลูกบอล
+               
             }
 
             // อัปเดตค่าความแรงที่แสดงใน UI Text
