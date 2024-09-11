@@ -17,8 +17,9 @@ public class Balls : MonoBehaviour
             // ตรวจสอบว่าลูกบอลนี้อยู่ในรายการที่อนุญาตให้ชนหรือไม่
             if (billiardsManager.IsBallAllowed(gameObject))
             {
-                // แจ้งไปที่ BilliardsManager ว่าลูกบอลนี้ได้ลงหลุม
-                billiardsManager.BallPocketed(gameObject);
+                // แจ้งไปที่ BilliardsManager ว่าลูกบอลนี้ได้ลงหลุม พร้อมกับส่งตำแหน่งของหลุม
+                Vector3 pocketPosition = other.transform.position;
+                billiardsManager.BallPocketed(gameObject, pocketPosition);
             }
         }
     }
