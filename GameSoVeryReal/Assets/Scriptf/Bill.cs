@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections.Generic; // สำหรับใช้ List
 using TMPro; // สำหรับ TextMeshPro
 
-public class BilliardsManager : MonoBehaviour
+public class Bill : MonoBehaviour
 {
     public List<GameObject> allowedBalls; // รายการลูกบอลที่สามารถชนได้และนับคะแนน
     public int[] playerScores = { 0, 0 }; // คะแนนของผู้เล่น
@@ -18,16 +18,12 @@ public class BilliardsManager : MonoBehaviour
     // Particle System
     public ParticleSystem pocketParticle;    // พาร์ติเคิลที่จะแสดงเมื่อมีลูกบอลตกลงหลุม
     public float particleDuration = 2f;      // ระยะเวลาที่พาร์ติเคิลจะแสดง
-    
-    // Cue Ball and Respawn Point
-    public GameObject cueBallPrefab;         // Prefab ของลูกบอลสีขาว
-    public Transform cueBallSpawnPoint;      // จุดที่ใช้ spawn ลูกบอลสีขาว
+
 
     private void Start()
     {
         // อัปเดต UI เริ่มต้น
         UpdateUI();
-        PlayerUI();
     }
 
     public bool IsBallAllowed(GameObject ball)
@@ -38,37 +34,19 @@ public class BilliardsManager : MonoBehaviour
 
     public void BallPocketed(GameObject ball, Vector3 pocketPosition)
     {
-        // ตรวจสอบว่าลูกบอลที่ตกเป็นลูกบอลสีขาวหรือไม่
-        Ball ballScript = ball.GetComponent<Ball>(); // สมมติว่ามีสคริปต์ Ball อยู่
+        // เพิ่มคะแนนให้ผู้เล่นปัจจุบัน
+        playerScores[currentPlayer]++;
+        Debug.Log("Player " + (currentPlayer + 1) + " scored! Current Score: " + playerScores[currentPlayer]);
 
-        if (ballScript != null && ballScript.isCueBall)
-        {
-            // ถ้าเป็นลูกบอลสีขาว ให้ทำการย้ายลูกบอลไปที่จุด spawn
-            Debug.Log("Cue ball pocketed! Respawning at designated point.");
-            RespawnCueBall();
-        }
-        else
-        {
-            // เพิ่มคะแนนให้ผู้เล่นปัจจุบัน
-            playerScores[currentPlayer]++;
-            Debug.Log("Player " + (currentPlayer + 1) + " scored! Current Score: " + playerScores[currentPlayer]);
+        // ซ่อนลูกบอลที่ลงหลุม
+        ball.SetActive(false);
 
-            // ซ่อนลูกบอลที่ลงหลุม
-            ball.SetActive(false);
+        // เรียกใช้พาร์ติเคิลที่ตำแหน่งของหลุม
+        ShowPocketParticle(pocketPosition);
 
-            // เรียกใช้พาร์ติเคิลที่ตำแหน่งของหลุม
-            ShowPocketParticle(pocketPosition);
-
-            // อัปเดต UI หลังจากมีการเพิ่มคะแนน
-            UpdateUI();
-        }
-    }
-
-    private void RespawnCueBall()
-    {
-        // ย้ายลูกบอลสีขาวไปยังตำแหน่งที่กำหนดโดย GameObject cueBallSpawnPoint
-        cueBallPrefab.transform.position = cueBallSpawnPoint.position;
-        cueBallPrefab.SetActive(true); // แสดงลูกบอลสีขาวใหม่
+        // อัปเดต UI หลังจากมีการเพิ่มคะแนน
+        UpdateUI();
+        
     }
 
     private void ShowPocketParticle(Vector3 position)
@@ -103,7 +81,6 @@ public class BilliardsManager : MonoBehaviour
 
             // อัปเดต UI เมื่อเปลี่ยนเทิร์น
             UpdateUI();
-            PlayerUI();
         }
     }
 
@@ -112,6 +89,8 @@ public class BilliardsManager : MonoBehaviour
         // อัปเดต Text ของคะแนนผู้เล่น
         playerScoreText1.text = "Player 1: " + playerScores[0];
         playerScoreText2.text = "Player 2: " + playerScores[1];
+        
+        
     }
 
     private void PlayerUI()
