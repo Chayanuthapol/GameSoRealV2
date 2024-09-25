@@ -11,8 +11,11 @@ public class Ball : MonoBehaviour
     public LineRenderer aimLineRenderer;
     public float ballStopThreshold = 0.2f;
     private BilliardsManager billiardsManager;
-    
+    public PhysicMaterial whiteball;
     public ParticleSystem explosionEffect;  
+    public ParticleSystem SpeedEffect; 
+    public ParticleSystem BounceEffect; 
+    public ParticleSystem HeavyEffect; 
     public float countdownTime = 3f;        
     private bool _isCountingDown = false;    
     private Renderer _ballRenderer;          
@@ -39,13 +42,29 @@ public class Ball : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         // Check if the collision object is a sphere (or has a tag "Sphere")
-        if (collision.gameObject.CompareTag("Items") && !_isCountingDown)
+        if (collision.gameObject.CompareTag("Bomb") && !_isCountingDown)
         {
             // Make the sphere disappear
             collision.gameObject.SetActive(false);
            
             // Start the countdown and explosion routine
             StartCoroutine(CountdownAndExplode());
+        }
+        if (collision.gameObject.CompareTag("Speed"))
+        {
+            collision.gameObject.SetActive(false);
+            StartCoroutine(IShowSpeed());
+        }
+        if (collision.gameObject.CompareTag("Heavy"))
+        {
+            collision.gameObject.SetActive(false);
+            
+            StartCoroutine(HeavyBall());
+        }
+        if (collision.gameObject.CompareTag("Bouncy"))
+        {
+            collision.gameObject.SetActive(false);
+            StartCoroutine(BouncyBall());
         }
     }
 
@@ -69,6 +88,50 @@ public class Ball : MonoBehaviour
         }
         Instantiate(explosionEffect, ball.transform.position, ball.transform.rotation);
         explosionEffect.Play();
+    }
+
+    IEnumerator IShowSpeed()
+    {
+        float originalSpeed = rb.velocity.magnitude;
+        rb.velocity *= 1.5f;
+        Instantiate(SpeedEffect, ball.transform.position, ball.transform.rotation);
+        SpeedEffect.Play();
+        
+        float speedBoostDuration = 5f;
+        yield return new WaitForSeconds(5f);
+        
+        rb.velocity = originalSpeed * rb.velocity.normalized;
+    }
+    
+
+    IEnumerator HeavyBall()
+    {
+        float originalMass = rb.mass;
+        rb.mass *= 10000;
+        
+        Instantiate(HeavyEffect, ball.transform.position, ball.transform.rotation);
+        HeavyEffect.Play();
+        
+        float heavyDuration = 5f;
+        yield return new WaitForSeconds(heavyDuration);
+        rb.mass = originalMass;
+    }
+    IEnumerator BouncyBall()
+    {
+        Collider ballCollider = GetComponent<Collider>();
+        whiteball = ballCollider.sharedMaterial;
+        
+        float originalBounciness = whiteball.bounciness;
+        whiteball.bounciness *= 2;
+        
+        Instantiate(BounceEffect, ball.transform.position, ball.transform.rotation);
+        BounceEffect.Play();
+        if (whiteball.bounciness == 1)
+        {
+            float bouncyDuration = 5f; 
+            yield return new WaitForSeconds(bouncyDuration);
+            whiteball.bounciness = originalBounciness;
+        }
     }
 
     private void Update()
