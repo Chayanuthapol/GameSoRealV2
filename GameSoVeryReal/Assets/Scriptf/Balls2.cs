@@ -1,9 +1,11 @@
 using UnityEngine;
 
-public class Balls2 : MonoBehaviour
+public class Balls2 :  MonoBehaviour
 {
     private BilliardsManager billiardsManager;
+    public Sprite ballSprite;
     public bool isPocketed = false; // สถานะลูกบอลว่าได้ถูกแทงลงหลุมหรือยัง
+    public FeedbackManager feedbackManager; // ลิงก์ไปยัง FeedbackManager
 
     private void Start()
     {
@@ -16,6 +18,8 @@ public class Balls2 : MonoBehaviour
         if (other.CompareTag("Pocket")) // ตรวจสอบว่าลูกบอลชนกับ Trigger ของหลุม
         {
             isPocketed = true;
+            feedbackManager.ShowFeedback("You scored! +1 Point"); // แสดงข้อความ Feedback ว่าได้คะแนน
+            
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelManager : MonoBehaviour
+public class LevelManager : PauseMenu
 {
     public string sceneName;
     // Start is called before the first frame update
@@ -20,5 +20,7 @@ public class LevelManager : MonoBehaviour
     public void ChangeScene()
     {
         SceneManager.LoadScene(sceneName);   
+        Time.timeScale = 1.0f;
+        GameisPaused = false;
     }
 }
