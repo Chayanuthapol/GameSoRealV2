@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -5,7 +6,7 @@ using UnityEngine.UI;
 public class StickController : MonoBehaviour
 {
     public Transform cue; // ตัวไม้คิว
-    public Ball ball; // ลูกบอล
+  
     public Camera mainCamera; // กล้องหลัก
     public float followDistance; // ระยะกล้อง
     public Slider powerSlider; // Slider สำหรับปรับค่าแรง
@@ -15,14 +16,24 @@ public class StickController : MonoBehaviour
     public float powerChargeSpeed = 1f; // ความเร็วในการเพิ่มค่าความแรงของ Slider
     public ParticleSystem powerParticle; // พาร์ติเคิลที่จะแสดงเมื่อความแรงมากกว่า 0.7
     private BilliardsManager BilliardsManager;
-
+    public Ball ball; // ลูกบอล
+    public Ball cueBall;
+    
     private Vector3 hitDirection;
     private bool isBallMoving = false;
     private bool isChargingPower = false; // กำลังชาร์จค่าความแรงหรือไม่
 
+
+    private void Start()
+    {
+        
+    }
+
+
     private void Update()
     {
-        if (ball != null && !isBallMoving)
+        
+        if (!isBallMoving)
         {
             FollowBall();
             AimCue();
@@ -42,7 +53,8 @@ public class StickController : MonoBehaviour
                 ResetPower();
                 isChargingPower = false;
                 powerParticle.Stop(); // หยุดพาร์ติเคิลหลังจากตีลูกบอล
-               
+                // ตรวจสอบความเร็วของลูกบอล
+                
             }
 
             // อัปเดตค่าความแรงที่แสดงใน UI Text
@@ -60,7 +72,9 @@ public class StickController : MonoBehaviour
             {
                 powerParticle.Stop(); // หยุดพาร์ติเคิลเมื่อค่า Power ต่ำกว่า 0.7
             }
+            
         }
+        
     }
 
     private void FollowBall()
@@ -103,6 +117,8 @@ public class StickController : MonoBehaviour
     {
         // ตีลูกบอลไปในทิศทางที่ถูกเล็ง พร้อมกับแรงที่ปรับจาก Slider
         ball.Hit(hitDirection * powerSlider.value);
+        Debug.Log("Hit");
+        Debug.Log(cueBall.rb.velocity.magnitude);
     }
 
     private void ResetPower()

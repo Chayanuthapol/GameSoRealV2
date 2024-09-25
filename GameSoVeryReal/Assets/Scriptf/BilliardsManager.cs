@@ -9,6 +9,7 @@ public class BilliardsManager : MonoBehaviour
     public int[] playerScores = { 0, 0 }; // คะแนนของผู้เล่น
     private int currentPlayer = 0; // ผู้เล่นปัจจุบัน (0 หรือ 1)
     private Ball Ball;
+    public static BilliardsManager Instance;
 
     // อ้างอิง UI
     public TextMeshProUGUI playerScoreText1; // Text แสดงคะแนนผู้เล่น 1
@@ -91,12 +92,6 @@ public class BilliardsManager : MonoBehaviour
 
     public void EndTurn(bool foul = false)
     {
-        if (foul)
-        {
-            // เพิ่มกฎเมื่อมีการฟาล์ว เช่น ให้ผู้เล่นเดิมได้เล่นต่อหรือมีการลงโทษ
-        }
-        else
-        {
             // เปลี่ยนเทิร์นปกติ
             currentPlayer = (currentPlayer + 1) % 2;
             Debug.Log("Switching to Player " + (currentPlayer + 1));
@@ -104,7 +99,7 @@ public class BilliardsManager : MonoBehaviour
             // อัปเดต UI เมื่อเปลี่ยนเทิร์น
             UpdateUI();
             PlayerUI();
-        }
+        
     }
 
     private void UpdateUI()
@@ -118,5 +113,13 @@ public class BilliardsManager : MonoBehaviour
     {
         // อัปเดต Text ของเทิร์นปัจจุบัน
         turnText.text = "Current Turn: Player " + (currentPlayer + 1);
+    }
+    
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
     }
 }
