@@ -6012,7 +6012,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -6625,7 +6625,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.31, y: 0, z: -15.6}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.47, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 277074783}
@@ -18686,7 +18686,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cue: {fileID: 1851135986}
-  ball: {fileID: 3759903140921698408}
   mainCamera: {fileID: 963194227}
   followDistance: 11
   powerSlider: {fileID: 468008754}
@@ -18695,6 +18694,8 @@ MonoBehaviour:
   maxAimDistance: 20
   powerChargeSpeed: 1
   powerParticle: {fileID: 917289618}
+  ball: {fileID: 3759903140921698408}
+  cueBall: {fileID: 3759903140921698408}
 --- !u!1 &1889437105
 GameObject:
   m_ObjectHideFlags: 0
@@ -30144,7 +30145,7 @@ Transform:
   m_GameObject: {fileID: 7515329042571557560}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0.14, y: -0.585, z: 0.86}
+  m_LocalPosition: {x: 0.14, y: -0.643, z: 0.86}
   m_LocalScale: {x: 11.092143, y: 11.092143, z: 11.092143}
   m_ConstrainProportionsScale: 1
   m_Children: []

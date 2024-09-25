@@ -106,7 +106,7 @@ public class Ball : MonoBehaviour
         {
             StartCoroutine(DelayMouseRelease()); // เริ่ม Coroutine สำหรับดีเลย์ 1 วินาที
         }
-
+            
         // ตรวจสอบความเร็วของลูกบอลหลังจากปล่อยเมาส์ขวา
         if (isMouseReleased && rb.velocity.magnitude <= ballStopThreshold)
         {
