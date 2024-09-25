@@ -18,7 +18,7 @@ public class BallManager : MonoBehaviour
         {
             // กำหนดระยะห่างระหว่างรูปภาพแต่ละลูกบอล (ปรับค่าตามที่ต้องการ)
             float spacing = 50f;  // ความห่างระหว่างแต่ละรูปภาพ
-            Vector2 startPosition = new Vector2(-350, -7);  // จุดเริ่มต้นของการจัดเรียง (แกน X,Y)
+            Vector2 startPosition = new Vector2(-350, 0);  // จุดเริ่มต้นของการจัดเรียง (แกน X,Y)
 
             for (int i = 0; i < balls.Count; i++)
             {

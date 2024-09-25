@@ -501,7 +501,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  dragValue: 0.5
+  dragValue: 0.3
   angularDragValue: 0.5
 --- !u!135 &103888796
 SphereCollider:
@@ -618,6 +618,81 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2006085699}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &105955835
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 105955836}
+  - component: {fileID: 105955838}
+  - component: {fileID: 105955837}
+  m_Layer: 5
+  m_Name: Player1Frame
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &105955836
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 105955835}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1224929818}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -272, y: 169}
+  m_SizeDelta: {x: 261.7862, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &105955837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 105955835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: af1287533f9049e4480fd6c1b5d4d19e, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &105955838
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 105955835}
+  m_CullTransparentMesh: 1
 --- !u!1 &107516017
 GameObject:
   m_ObjectHideFlags: 3
@@ -831,7 +906,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  dragValue: 0.5
+  dragValue: 0.3
   angularDragValue: 0.5
 --- !u!135 &136266856
 SphereCollider:
@@ -6131,7 +6206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  dragValue: 0.5
+  dragValue: 0.3
   angularDragValue: 0.5
 --- !u!135 &355227997
 SphereCollider:
@@ -6898,7 +6973,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  dragValue: 0.5
+  dragValue: 0.3
   angularDragValue: 0.5
 --- !u!135 &569263113
 SphereCollider:
@@ -7175,7 +7250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  dragValue: 0.5
+  dragValue: 0.3
   angularDragValue: 0.5
 --- !u!135 &643180909
 SphereCollider:
@@ -7364,6 +7439,81 @@ Transform:
   - {fileID: 2137956555}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 38.327, y: 0, z: 0}
+--- !u!1 &670027966
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 670027967}
+  - component: {fileID: 670027969}
+  - component: {fileID: 670027968}
+  m_Layer: 5
+  m_Name: P2FrameGrey
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &670027967
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670027966}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1224929818}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 276, y: 169}
+  m_SizeDelta: {x: 261.7862, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &670027968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670027966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 263f3aa68fbad124f85ba2690ffcb11f, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &670027969
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670027966}
+  m_CullTransparentMesh: 1
 --- !u!1 &684558650
 GameObject:
   m_ObjectHideFlags: 0
@@ -7599,6 +7749,81 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &771527190
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 771527191}
+  - component: {fileID: 771527193}
+  - component: {fileID: 771527192}
+  m_Layer: 5
+  m_Name: P2Frame
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &771527191
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771527190}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1224929818}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 295, y: 169}
+  m_SizeDelta: {x: 261.7862, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &771527192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771527190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: af1287533f9049e4480fd6c1b5d4d19e, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &771527193
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771527190}
+  m_CullTransparentMesh: 1
 --- !u!1 &832474389
 GameObject:
   m_ObjectHideFlags: 0
@@ -7758,7 +7983,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -266.37, y: 178.8}
+  m_AnchoredPosition: {x: -253.80002, y: 167.30002}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &854492977
@@ -8042,7 +8267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  dragValue: 0.5
+  dragValue: 0.3
   angularDragValue: 0.5
 --- !u!135 &908290683
 SphereCollider:
@@ -13232,7 +13457,7 @@ MonoBehaviour:
   ballStopThreshold: 0.3
   explosionEffect: {fileID: 1801650530}
   countdownTime: 3
-  dragValue: 0.5
+  dragValue: 0.3
   angularDragValue: 0.5
   isCueBall: 1
 --- !u!114 &922609588
@@ -13247,7 +13472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a315c6ea9f3b3cb43a5cd5bf2fb26a2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cuehited: {fileID: 0}
+  cuehited: {fileID: 922609585}
 --- !u!135 &922609589
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -13738,7 +13963,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  dragValue: 0.5
+  dragValue: 0.3
   angularDragValue: 0.5
 --- !u!135 &1026415520
 SphereCollider:
@@ -13989,7 +14214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  dragValue: 0.5
+  dragValue: 0.3
   angularDragValue: 0.5
 --- !u!135 &1093800818
 SphereCollider:
@@ -14157,7 +14382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  dragValue: 0.5
+  dragValue: 0.3
   angularDragValue: 0.5
 --- !u!135 &1099486963
 SphereCollider:
@@ -14600,6 +14825,10 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 468008753}
+  - {fileID: 1426876734}
+  - {fileID: 771527191}
+  - {fileID: 670027967}
+  - {fileID: 105955836}
   - {fileID: 854492976}
   - {fileID: 1496176554}
   - {fileID: 1951968163}
@@ -14662,7 +14891,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  dragValue: 0.5
+  dragValue: 0.3
   angularDragValue: 0.5
 --- !u!135 &1236603107
 SphereCollider:
@@ -15234,7 +15463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  dragValue: 0.5
+  dragValue: 0.3
   angularDragValue: 0.5
 --- !u!135 &1309326682
 SphereCollider:
@@ -15351,6 +15580,81 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2006085699}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1426876730
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1426876734}
+  - component: {fileID: 1426876733}
+  - component: {fileID: 1426876731}
+  m_Layer: 5
+  m_Name: Player1FrameGrey
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1426876731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1426876730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 263f3aa68fbad124f85ba2690ffcb11f, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1426876733
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1426876730}
+  m_CullTransparentMesh: 1
+--- !u!224 &1426876734
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1426876730}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1224929818}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -272, y: 169}
+  m_SizeDelta: {x: 261.7862, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1476015428
 GameObject:
   m_ObjectHideFlags: 0
@@ -15640,7 +15944,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 323, y: 178.8}
+  m_AnchoredPosition: {x: 294, y: 170}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1500322831
@@ -15794,6 +16098,7 @@ GameObject:
   - component: {fileID: 1605110006}
   - component: {fileID: 1605110007}
   - component: {fileID: 1605110008}
+  - component: {fileID: 1605110009}
   m_Layer: 0
   m_Name: Gamemaneger
   m_TagString: Untagged
@@ -15823,7 +16128,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1605110005}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06456d13d9e0cbf4195b1c08c92118b1, type: 3}
   m_Name: 
@@ -15865,6 +16170,46 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   feedbackText: {fileID: 99715285}
+--- !u!114 &1605110009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605110005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e09243a67122e5429a0ddc2fe3ad2c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allowedBalls:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  playerScores: 0000000000000000
+  image: {fileID: 105955836}
+  image2: {fileID: 1426876734}
+  image3: {fileID: 670027967}
+  image4: {fileID: 771527191}
+  playerScoreText1: {fileID: 854492978}
+  playerScoreText2: {fileID: 1496176552}
+  turnText: {fileID: 1951968164}
+  pocketParticle: {fileID: 208117105}
+  particleDuration: 2
+  cueBallPrefab: {fileID: 922609585}
+  cueBallSpawnPoint: {fileID: 1055743588}
 --- !u!1 &1609967353
 GameObject:
   m_ObjectHideFlags: 0
@@ -16066,7 +16411,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  dragValue: 0.5
+  dragValue: 0.3
   angularDragValue: 0.5
 --- !u!135 &1709124007
 SphereCollider:
@@ -21343,7 +21688,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 6.6990356, y: -17}
+  m_AnchoredPosition: {x: 6.6990356, y: 47}
   m_SizeDelta: {x: 741.6034, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1812187197
@@ -21435,7 +21780,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  dragValue: 0.5
+  dragValue: 0.3
   angularDragValue: 0.5
 --- !u!135 &1817515030
 SphereCollider:
@@ -21849,7 +22194,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cue: {fileID: 1851135986}
-  ball: {fileID: 922609587}
   mainCamera: {fileID: 963194227}
   followDistance: 11
   powerSlider: {fileID: 468008754}
@@ -21858,6 +22202,8 @@ MonoBehaviour:
   maxAimDistance: 20
   powerChargeSpeed: 1
   powerParticle: {fileID: 917289618}
+  ball: {fileID: 922609587}
+  cueBall: {fileID: 922609587}
 --- !u!1 &1889437105
 GameObject:
   m_ObjectHideFlags: 0
@@ -21997,7 +22343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  dragValue: 0.5
+  dragValue: 0.3
   angularDragValue: 0.5
 --- !u!135 &1901604683
 SphereCollider:
@@ -22299,7 +22645,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  dragValue: 0.5
+  dragValue: 0.3
   angularDragValue: 0.5
 --- !u!135 &1962895634
 SphereCollider:

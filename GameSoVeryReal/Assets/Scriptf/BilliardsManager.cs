@@ -100,6 +100,7 @@ public class BilliardsManager : MonoBehaviour
             UpdateUI();
             PlayerUI();
         
+        
     }
 
     private void UpdateUI()

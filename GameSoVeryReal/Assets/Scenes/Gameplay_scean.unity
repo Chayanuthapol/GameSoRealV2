@@ -18686,7 +18686,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cue: {fileID: 1851135986}
-  ball: {fileID: 3759903140921698408}
   mainCamera: {fileID: 963194227}
   followDistance: 11
   powerSlider: {fileID: 468008754}
@@ -18695,6 +18694,8 @@ MonoBehaviour:
   maxAimDistance: 20
   powerChargeSpeed: 1
   powerParticle: {fileID: 917289618}
+  ball: {fileID: 3759903140921698408}
+  cueBall: {fileID: 3759903140921698408}
 --- !u!1 &1889437105
 GameObject:
   m_ObjectHideFlags: 0

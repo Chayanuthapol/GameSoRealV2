@@ -36,6 +36,7 @@ public class Balls2 :  MonoBehaviour
 
             feedbackManager.ShowFeedback("You scored! +1 Point"); // แสดงข้อความ Feedback ว่าได้คะแนน
             
+            
         }
     }
 }
