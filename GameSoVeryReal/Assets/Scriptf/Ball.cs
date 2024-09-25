@@ -9,7 +9,7 @@ public class Ball : MonoBehaviour
     public Transform cue;                  // ตัวไม้คิว
     public Ball ball;                      // ลูกบอล
     public LineRenderer aimLineRenderer;
-    public float ballStopThreshold = 0.2f;
+    public float ballStopThreshold ;
     private BilliardsManager billiardsManager;
     
     public ParticleSystem explosionEffect;  
@@ -23,6 +23,7 @@ public class Ball : MonoBehaviour
     public float dragValue = 0.5f;  // ปรับค่า Drag ตามความเหมาะสม
     public float angularDragValue = 0.5f;  // ปรับค่า Angular Drag
     public bool isCueBall = true;  // ตรวจสอบว่าเป็นลูกบอลสีขาว
+    private bool isMouseReleased = false; 
 
     private void Start()
     {
@@ -74,7 +75,9 @@ public class Ball : MonoBehaviour
     private void Update()
     {
         // Check if the ball is moving
-       
+        float currentVelocity = rb.velocity.magnitude;
+        Debug.Log("Current velocity: " + currentVelocity);
+        
         if (rb.velocity.magnitude > ballStopThreshold)
         {
             isMoving = true;
@@ -86,21 +89,56 @@ public class Ball : MonoBehaviour
 
         if (isMoving)
         {
+            //Debug.Log("Ball is moving");
             HideCue();
+            
         }
         else if (!isMoving)
         {
+            //Debug.Log("Ball has stopped");
             ShowCue();
+            
         }
-        // Debug.Log(rb.velocity.magnitude);
+        
+        
+        // ตรวจสอบการปล่อยเมาส์ขวา
+        if (Input.GetMouseButtonUp(0))
+        {
+            StartCoroutine(DelayMouseRelease()); // เริ่ม Coroutine สำหรับดีเลย์ 1 วินาที
+        }
+
+        // ตรวจสอบความเร็วของลูกบอลหลังจากปล่อยเมาส์ขวา
+        if (isMouseReleased && rb.velocity.magnitude <= ballStopThreshold)
+        {
+            billiardsManager.EndTurn();
+            isMouseReleased = false; // รีเซ็ตสถานะเมาส์เพื่อไม่ให้ฟังก์ชันถูกเรียกซ้ำ
+        }
+        //Debug.Log(rb.velocity.magnitude);
+        Debug.Log(isMouseReleased);
     }
 
+    
+    // Coroutine ที่จะดีเลย์ 1 วินาทีก่อนตั้งค่า isMouseReleased = true;
+    IEnumerator DelayMouseRelease()
+    {
+        yield return new WaitForSeconds(1f); // รอ 1 วินาที
+        isMouseReleased = true;
+    }
+    
+    
     // Apply force to hit the ball
     public void Hit(Vector3 force)
     {
+        
         rb.AddForce(force, ForceMode.Impulse);
     }
 
+    public bool IsBallMoving()
+    {
+        float velocityMagnitude = rb.velocity.magnitude;
+        
+        return rb.velocity.magnitude > ballStopThreshold;
+    }
     
     private void HideCue()
     {
