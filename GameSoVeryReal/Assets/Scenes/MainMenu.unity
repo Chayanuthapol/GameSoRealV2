@@ -818,7 +818,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pausemenuUI: {fileID: 0}
-  sceneName: BornToroScene
+  sceneName: BornScene
 --- !u!4 &1720519650
 Transform:
   m_ObjectHideFlags: 0
