@@ -9,6 +9,10 @@ TagManager:
   - Pocket
   - Items
   - WhiteBall
+  - Bomb
+  - Speed
+  - Heavy
+  - Bouncy
   layers:
   - Default
   - TransparentFX
