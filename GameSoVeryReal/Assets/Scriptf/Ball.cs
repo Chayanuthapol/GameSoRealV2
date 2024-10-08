@@ -10,7 +10,7 @@ public class Ball : MonoBehaviour
     public Ball ball;                      // ลูกบอล
     public LineRenderer aimLineRenderer;
     public float ballStopThreshold ;
-    private BilliardsManager billiardsManager;
+    private BilliardsManager2 billiardsManager;
     
     public ParticleSystem explosionEffect;  
     public float countdownTime = 3f;        
@@ -34,7 +34,7 @@ public class Ball : MonoBehaviour
         rb.angularDrag = angularDragValue;
 
         // หา BilliardsManager เพื่อเรียกใช้เมื่อลูกบอลลงหลุม
-        billiardsManager = FindObjectOfType<BilliardsManager>();
+        billiardsManager = FindObjectOfType<BilliardsManager2>();
     }
 
     void OnCollisionEnter(Collision collision)

@@ -1,0 +1,466 @@
+fileFormatVersion: 2
+guid: da314c6a44926d44b9d14e690d346fbd
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: png-transparent-billiard-ball-billiards-eight-ball-pool-billiard-ball-text-hand-sport_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 597
+        width: 165
+        height: 164
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e944ea2c73bfb624f894157802a97173
+      internalID: 307291882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: png-transparent-billiard-ball-billiards-eight-ball-pool-billiard-ball-text-hand-sport_1
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 598
+        width: 165
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 248e8d770a28d2f41b8dc513fb1febba
+      internalID: -2109354472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: png-transparent-billiard-ball-billiards-eight-ball-pool-billiard-ball-text-hand-sport_2
+      rect:
+        serializedVersion: 2
+        x: 508
+        y: 597
+        width: 165
+        height: 164
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c002059200f8a3b4e820da48641abcde
+      internalID: -1969103172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: png-transparent-billiard-ball-billiards-eight-ball-pool-billiard-ball-text-hand-sport_3
+      rect:
+        serializedVersion: 2
+        x: 758
+        y: 597
+        width: 162
+        height: 164
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efb30410c902b8545823b7bbf6bd98ea
+      internalID: 728956324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: png-transparent-billiard-ball-billiards-eight-ball-pool-billiard-ball-text-hand-sport_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 402
+        width: 162
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85b9b5283d25b0545b5193554ed74726
+      internalID: -679465930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: png-transparent-billiard-ball-billiards-eight-ball-pool-billiard-ball-text-hand-sport_5
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 401
+        width: 164
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 973893d896efb834ca8cf234dc7c0f03
+      internalID: -231042051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: png-transparent-billiard-ball-billiards-eight-ball-pool-billiard-ball-text-hand-sport_6
+      rect:
+        serializedVersion: 2
+        x: 506
+        y: 402
+        width: 164
+        height: 165
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccb3d22b45e33f548ac35852fb494e76
+      internalID: -1079905665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: png-transparent-billiard-ball-billiards-eight-ball-pool-billiard-ball-text-hand-sport_7
+      rect:
+        serializedVersion: 2
+        x: 757
+        y: 402
+        width: 163
+        height: 165
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ecf008fbb4dc154e9405bc7abc23944
+      internalID: 1308982071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: png-transparent-billiard-ball-billiards-eight-ball-pool-billiard-ball-text-hand-sport_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 220
+        width: 164
+        height: 164
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a98faa4d06f18ce41a59df6a560ee989
+      internalID: 465798474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: png-transparent-billiard-ball-billiards-eight-ball-pool-billiard-ball-text-hand-sport_9
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 220
+        width: 166
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a6ea1463341c7b4c8949e5325938da1
+      internalID: -746723337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: png-transparent-billiard-ball-billiards-eight-ball-pool-billiard-ball-text-hand-sport_10
+      rect:
+        serializedVersion: 2
+        x: 497
+        y: 220
+        width: 179
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a7a73e8875124e4f95c568090fa19c4
+      internalID: 258309380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: png-transparent-billiard-ball-billiards-eight-ball-pool-billiard-ball-text-hand-sport_11
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 205
+        width: 165
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aca9551a66f2be74bad6b5369ac5de59
+      internalID: 1002876506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: png-transparent-billiard-ball-billiards-eight-ball-pool-billiard-ball-text-hand-sport_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 19
+        width: 165
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4ab59e8d8a76594092560d431b61867
+      internalID: 1694958394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: png-transparent-billiard-ball-billiards-eight-ball-pool-billiard-ball-text-hand-sport_13
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 19
+        width: 166
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07a2aed372acb1c4f9e26c248e33edd4
+      internalID: -1973195828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: png-transparent-billiard-ball-billiards-eight-ball-pool-billiard-ball-text-hand-sport_14
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 19
+        width: 180
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd9361010a0e80d49968836401b9b068
+      internalID: -1820275631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: png-transparent-billiard-ball-billiards-eight-ball-pool-billiard-ball-text-hand-sport_15
+      rect:
+        serializedVersion: 2
+        x: 742
+        y: 21
+        width: 178
+        height: 167
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2db85e01ed889eb49ac816ea5aa80e4a
+      internalID: 1351427276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 14d520bdd1d2f494cb01aaff500782fc
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      png-transparent-billiard-ball-billiards-eight-ball-pool-billiard-ball-text-hand-sport_0: 307291882
+      png-transparent-billiard-ball-billiards-eight-ball-pool-billiard-ball-text-hand-sport_1: -2109354472
+      png-transparent-billiard-ball-billiards-eight-ball-pool-billiard-ball-text-hand-sport_10: 258309380
+      png-transparent-billiard-ball-billiards-eight-ball-pool-billiard-ball-text-hand-sport_11: 1002876506
+      png-transparent-billiard-ball-billiards-eight-ball-pool-billiard-ball-text-hand-sport_12: 1694958394
+      png-transparent-billiard-ball-billiards-eight-ball-pool-billiard-ball-text-hand-sport_13: -1973195828
+      png-transparent-billiard-ball-billiards-eight-ball-pool-billiard-ball-text-hand-sport_14: -1820275631
+      png-transparent-billiard-ball-billiards-eight-ball-pool-billiard-ball-text-hand-sport_15: 1351427276
+      png-transparent-billiard-ball-billiards-eight-ball-pool-billiard-ball-text-hand-sport_2: -1969103172
+      png-transparent-billiard-ball-billiards-eight-ball-pool-billiard-ball-text-hand-sport_3: 728956324
+      png-transparent-billiard-ball-billiards-eight-ball-pool-billiard-ball-text-hand-sport_4: -679465930
+      png-transparent-billiard-ball-billiards-eight-ball-pool-billiard-ball-text-hand-sport_5: -231042051
+      png-transparent-billiard-ball-billiards-eight-ball-pool-billiard-ball-text-hand-sport_6: -1079905665
+      png-transparent-billiard-ball-billiards-eight-ball-pool-billiard-ball-text-hand-sport_7: 1308982071
+      png-transparent-billiard-ball-billiards-eight-ball-pool-billiard-ball-text-hand-sport_8: 465798474
+      png-transparent-billiard-ball-billiards-eight-ball-pool-billiard-ball-text-hand-sport_9: -746723337
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

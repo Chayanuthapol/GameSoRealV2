@@ -817,7 +817,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 193be3a79385b9249ae941876a210432, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: BornToroScene
+  pausemenuUI: {fileID: 0}
+  sceneName: BornScene
 --- !u!4 &1720519650
 Transform:
   m_ObjectHideFlags: 0
