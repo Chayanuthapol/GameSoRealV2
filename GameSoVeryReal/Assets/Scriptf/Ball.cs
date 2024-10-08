@@ -37,7 +37,7 @@ public class Ball : MonoBehaviour
         rb.angularDrag = angularDragValue;
 
         // หา BilliardsManager เพื่อเรียกใช้เมื่อลูกบอลลงหลุม
-        billiardsManager = FindObjectOfType<BilliardsManager2>();
+        billiardsManager = FindObjectOfType<BilliardsManager>();
     }
 
     void OnCollisionEnter(Collision collision)
