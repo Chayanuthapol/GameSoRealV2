@@ -12,7 +12,7 @@ public class PowerUpBehavior : MonoBehaviour
     public Light powerupLight;
     public Rigidbody whiteballRb;
     public float ballMovingThreshold = 0.01f; // Minimum speed for white ball to activate power-up
-    public float respawnDelay = 1f; // Delay before respawning power-up
+    public float respawnDelay = 0.01f; // Delay before respawning power-up
 
     private bool isActivated = false;
 

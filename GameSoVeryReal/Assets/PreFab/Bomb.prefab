@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7fa0bf402ea329248b657a7bdc097d60, type: 2}
+  - {fileID: 2100000, guid: da0f3a91bb0d8a348a5a62cb6ce7f8e4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -149,4 +149,8 @@ MonoBehaviour:
   rotationSpeed: 90
   bobSpeed: 1
   bobHeight: 0.1
-  lifetime: 15
+  glowColor: {r: 1, g: 1, b: 1, a: 1}
+  powerupLight: {fileID: 0}
+  whiteballRb: {fileID: 0}
+  ballMovingThreshold: 0.01
+  respawnDelay: 1

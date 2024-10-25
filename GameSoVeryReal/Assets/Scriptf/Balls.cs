@@ -59,11 +59,17 @@ public class Balls : MonoBehaviour
     {
         if (other.CompareTag("Pocket"))
         {
-            if (billiardsManager.IsBallAllowed(gameObject))
+            if (!isFrozen && billiardsManager.IsBallAllowed(gameObject))
             {
                 Vector3 pocketPosition = other.transform.position;
                 billiardsManager.BallPocketed(gameObject, pocketPosition);
             }
+        } 
+        if (other.CompareTag("Freeze"))
+        {
+           
+            FreezePowerUpManager.Instance.ActivateFreezePowerUp();
+            Destroy(other.gameObject);
         }
     }
 

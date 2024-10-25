@@ -29,13 +29,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2216300736864585593}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.37, y: 0.5, z: -5.5}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8926597205041745686
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8b24f6fd1dce0fe478cbd6d0881d33ad, type: 2}
+  - {fileID: 2100000, guid: e4b02732004f163488565a71df45f037, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -149,4 +149,8 @@ MonoBehaviour:
   rotationSpeed: 90
   bobSpeed: 1
   bobHeight: 0.1
-  lifetime: 15
+  glowColor: {r: 1, g: 1, b: 1, a: 1}
+  powerupLight: {fileID: 0}
+  whiteballRb: {fileID: 0}
+  ballMovingThreshold: 0.01
+  respawnDelay: 1
