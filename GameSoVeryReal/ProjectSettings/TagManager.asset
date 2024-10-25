@@ -17,6 +17,7 @@ TagManager:
   - Tornado
   - Slip
   - Sticky
+  - Floor
   layers:
   - Default
   - TransparentFX
@@ -36,7 +37,7 @@ TagManager:
   - Tornado
   - Slip
   - Sticky
-  - 
+  - Floor
   - 
   - 
   - 

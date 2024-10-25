@@ -34923,9 +34923,10 @@ GameObject:
   - component: {fileID: 975868057}
   - component: {fileID: 975868056}
   - component: {fileID: 975868060}
-  m_Layer: 3
+  - component: {fileID: 975868061}
+  m_Layer: 18
   m_Name: Fabric
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35014,7 +35015,9 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6629797300637803691, guid: 8386560c55226d14ea39a33e4e1b4b6b, type: 3}
+  - {fileID: 2100000, guid: 6e7e3cf3f2265b74fbeb009f622ae0f6, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -35062,6 +35065,8 @@ MonoBehaviour:
   - {fileID: 230443699846298607, guid: 3777f376e49cb0e47a18ccc13cab75a3, type: 3}
   - {fileID: 7509250635507209878, guid: 83b0e6923f21efd4299c934689d48322, type: 3}
   - {fileID: 8145117749107586214, guid: 94891eb221e1151438911c23c7c54f61, type: 3}
+  - {fileID: 106418400903281908, guid: 178faac414e9921489a1c6dd3ce740f6, type: 3}
+  - {fileID: 3972350202283221874, guid: 0d64d5f163a9eaa47820af86281fc330, type: 3}
   spawnInterval: 0.01
   maxPowerUpsOnTable: 3
   tableLength: 15
@@ -35073,6 +35078,22 @@ MonoBehaviour:
   maxSpawnAttempts: 120
   stopThreshold: 0.01
   whiteBallRb: {fileID: 2164173385057886462}
+--- !u!114 &975868061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975868054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 360618daaffb4201ac233a9318fab32d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalMaterial: {fileID: 2100000, guid: 6e7e3cf3f2265b74fbeb009f622ae0f6, type: 2}
+  StickyMaterial: {fileID: 2100000, guid: 32c66db19e63a1c44bfc5e3ca59d8c1e, type: 2}
+  SliperyMaterial: {fileID: 2100000, guid: 8d7889a658ec73f41abaef0384327f8f, type: 2}
+  materialChangeDuration: 5
 --- !u!1 &977461032
 GameObject:
   m_ObjectHideFlags: 0
@@ -85918,6 +85939,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frozenMaterial: {fileID: 2100000, guid: e3a7173add3dfb34c8d21646c31d53a2, type: 2}
   FreezeEffect: {fileID: 5935687898360078945, guid: e27cbbdbcf8c1514391b2ee422bc98b6, type: 3}
+  slipperyMaterial: {fileID: 0}
+  stickyMaterial: {fileID: 0}
+  slipperyDragMultiplier: 0.1
+  stickyDragMultiplier: 5
   rb: {fileID: 1851135987}
   isMoving: 0
   cue: {fileID: 1851135986}
@@ -85930,7 +85955,6 @@ MonoBehaviour:
   BounceEffect: {fileID: 5973074122407658024, guid: ce9591d0abc293045b06b168d2fb2cc8, type: 3}
   HeavyEffect: {fileID: 3771522818819963147, guid: 07da922580e56e44da12e79243d184a1, type: 3}
   TornadoEffect: {fileID: 8921546629745637335, guid: 49a564ea000255b4d8c04291af26a114, type: 3}
-  whiteballBounce: 0
   countdownTime: 3
   countSpeed: 3
   countHeavy: 3

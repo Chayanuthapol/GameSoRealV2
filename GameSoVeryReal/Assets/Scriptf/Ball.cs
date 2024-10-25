@@ -12,6 +12,15 @@ public class Ball : MonoBehaviour
     private bool isFrozen = false;
     private Rigidbody originalRigidbody;
     
+    [Header("Surface Power-ups")]
+    public Material slipperyMaterial;
+    public Material stickyMaterial;
+    public float slipperyDragMultiplier = 0.1f; // Lower drag for slippery effect
+    public float stickyDragMultiplier = 5f;     // Higher drag for sticky effect
+    private Material originalFloorMaterial;
+    private float originalFloorDrag;
+
+    
     public Rigidbody rb;
     public bool isMoving;
     public Transform cue;                  // ตัวไม้คิว
@@ -25,7 +34,7 @@ public class Ball : MonoBehaviour
     public ParticleSystem BounceEffect; 
     public ParticleSystem HeavyEffect;
     public ParticleSystem TornadoEffect;
-    public float whiteballBounce = 1/2;
+    // public float whiteballBounce = 1/2;
     public float countdownTime = 3f;
     public float countSpeed = 3f;
     public float countHeavy = 3f;  
@@ -62,6 +71,13 @@ public class Ball : MonoBehaviour
         originalMaterial = _ballRenderer.material;
         originalRigidbody = rb;
 
+        GameObject floor = GameObject.FindGameObjectWithTag("Floor");
+        if (floor != null)
+        {
+            originalFloorMaterial = floor.GetComponent<Renderer>().material;
+            originalFloorDrag = floor.GetComponent<Collider>().material.dynamicFriction;
+        }
+        
         // หา BilliardsManager เพื่อเรียกใช้เมื่อลูกบอลลงหลุม
         billiardsManager = FindObjectOfType<BilliardsManager>();
     }
@@ -252,7 +268,61 @@ public class Ball : MonoBehaviour
         ball.isFrozen = false;
     }
 
-    
+    IEnumerator SlipperyEffect()
+    {
+        isCountSlip = true;
+        GameObject floor = GameObject.FindGameObjectWithTag("Floor");
+        
+        if (floor != null)
+        {
+            // Store original properties
+            Renderer floorRenderer = floor.GetComponent<Renderer>();
+            PhysicMaterial floorPhysics = floor.GetComponent<Collider>().material;
+            
+            // Apply slippery properties
+            floorRenderer.material = slipperyMaterial;
+            floorPhysics.dynamicFriction *= slipperyDragMultiplier;
+            floorPhysics.staticFriction *= slipperyDragMultiplier;
+            
+            // Wait for duration
+            yield return new WaitForSeconds(countSlip);
+            
+            // Restore original properties
+            floorRenderer.material = originalFloorMaterial;
+            floorPhysics.dynamicFriction = originalFloorDrag;
+            floorPhysics.staticFriction = originalFloorDrag;
+        }
+        
+        isCountSlip = false;
+    }
+
+    IEnumerator StickyEffect()
+    {
+        isCountSticky = true;
+        GameObject floor = GameObject.FindGameObjectWithTag("Floor");
+        
+        if (floor != null)
+        {
+            // Store original properties
+            Renderer floorRenderer = floor.GetComponent<Renderer>();
+            PhysicMaterial floorPhysics = floor.GetComponent<Collider>().material;
+            
+            // Apply sticky properties
+            floorRenderer.material = stickyMaterial;
+            floorPhysics.dynamicFriction *= stickyDragMultiplier;
+            floorPhysics.staticFriction *= stickyDragMultiplier;
+            
+            // Wait for duration
+            yield return new WaitForSeconds(countSticky);
+            
+            // Restore original properties
+            floorRenderer.material = originalFloorMaterial;
+            floorPhysics.dynamicFriction = originalFloorDrag;
+            floorPhysics.staticFriction = originalFloorDrag;
+        }
+        
+        isCountSticky = false;
+    }
 
     // IEnumerator BouncyBall()
     // {
@@ -398,6 +468,17 @@ public class Ball : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             StartCoroutine(FireTornado());
+        }
+        if (other.CompareTag("Slip") && !isCountSlip)
+        {
+            other.gameObject.SetActive(false);
+            StartCoroutine(SlipperyEffect());
+        }
+
+        if (other.CompareTag("Sticky") && !isCountSticky)
+        {
+            other.gameObject.SetActive(false);
+            StartCoroutine(StickyEffect());
         }
         // if (other.CompareTag("Bouncy"))
         // {
