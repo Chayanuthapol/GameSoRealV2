@@ -49,6 +49,8 @@ public class Ball : MonoBehaviour
     public float angularDragValue = 0.5f;  // ปรับค่า Angular Drag
     public bool isCueBall = true;  // ตรวจสอบว่าเป็นลูกบอลสีขาว
     private bool isMouseReleased = false; 
+    
+    private Dictionary<string, ParticleSystem> activeEffects = new Dictionary<string, ParticleSystem>();
 
     private void Start()
     {
@@ -84,13 +86,16 @@ public class Ball : MonoBehaviour
             if (rb == null) continue;
             rb.AddExplosionForce(_explosionForce, transform.position, _explosionRadius);
         }
-        ParticleSystem explosion = Instantiate(explosionEffect, ball.transform.position, ball.transform.rotation);
-        explosion.transform.parent = ball.transform;
-        explosion.Play();
-        
-        if (explosion != null) Destroy(explosion.gameObject);
-        yield return new WaitForSeconds(explosionEffect.main.duration);
-        _isCountingDown = false;
+        if (explosionEffect != null)
+        {
+            ParticleSystem explosion = Instantiate(explosionEffect);
+            explosion.transform.position = transform.position;
+            explosion.Play();
+
+            // Wait for particle system to finish
+            yield return new WaitForSeconds(explosion.main.duration);
+            Destroy(explosion.gameObject);
+        }
        
     }
 
@@ -99,21 +104,30 @@ public class Ball : MonoBehaviour
         isCountSpeed = true;
         float originalSpeed = rb.velocity.magnitude;
         rb.velocity *= 1.5f;
-        ParticleSystem Speed = Instantiate(SpeedEffect, ball.transform.position, ball.transform.rotation);
-        Speed.transform.parent = ball.transform;
-        Speed.Play(); 
-       
-        
-        for (int i = (int)countSpeed; i > 0; i--)
+        if (SpeedEffect != null)
         {
-            yield return new WaitForSeconds(1f);
+            ParticleSystem speedEffect = Instantiate(SpeedEffect);
+            speedEffect.transform.position = ball.transform.position;
+            speedEffect.transform.rotation = ball.transform.rotation;
+            activeEffects["Speed"] = speedEffect;
+            speedEffect.Play();
+
+            // Duration of speed effect
+            for (int i = (int)countSpeed; i > 0; i--)
+            {
+                yield return new WaitForSeconds(1f);
+            }
+
+            rb.velocity = originalSpeed * rb.velocity.normalized;
+
+            // Cleanup
+            if (speedEffect != null)
+            {
+                Destroy(speedEffect.gameObject);
+                activeEffects.Remove("Speed");
+            }
         }
-        rb.velocity = originalSpeed * rb.velocity.normalized;
-        if (Speed != null) Destroy(Speed.gameObject);
-        
-        yield return new WaitForSeconds(SpeedEffect.main.duration);
         isCountSpeed = false;
-       
     }
     
 
@@ -123,34 +137,58 @@ public class Ball : MonoBehaviour
         float originalMass = rb.mass;
         rb.mass *= 10000;
         
-        ParticleSystem Heavy = Instantiate(HeavyEffect, ball.transform.position, ball.transform.rotation);
-        Heavy.transform.parent = ball.transform;
-        Heavy.Play();
-        
-        for (int i = (int)countHeavy; i > 0; i--)
+        if (HeavyEffect != null)
         {
-            yield return new WaitForSeconds(1f);
+            ParticleSystem heavyEffect = Instantiate(HeavyEffect);
+            heavyEffect.transform.position = transform.position;
+            heavyEffect.transform.rotation = transform.rotation;
+            activeEffects["Heavy"] = heavyEffect;
+            heavyEffect.Play();
+
+            for (int i = (int)countHeavy; i > 0; i--)
+            {
+                yield return new WaitForSeconds(1f);
+            }
+
+            rb.mass = originalMass;
+
+            // Cleanup
+            if (heavyEffect != null)
+            {
+                Destroy(heavyEffect.gameObject);
+                activeEffects.Remove("Heavy");
+            }
         }
-        rb.mass = originalMass;
-        if (Heavy != null) Destroy(Heavy.gameObject);
-        yield return new WaitForSeconds(HeavyEffect.main.duration);
+
         isCountHeavy = false;
       
     }
     IEnumerator FireTornado()
     {
         isCountTornado = true;
-        Instantiate(TornadoEffect, ball.transform.position, ball.transform.rotation);
-        TornadoEffect.transform.parent = ball.transform;
-        TornadoEffect.Play();
-        for (int i = (int)countTornado; i > 0; i--)
+        if (TornadoEffect != null)
         {
-            yield return new WaitForSeconds(1f);  
+            ParticleSystem tornadoEffect = Instantiate(TornadoEffect);
+            tornadoEffect.transform.position = transform.position;
+            
+            activeEffects["Tornado"] = tornadoEffect;
+            tornadoEffect.Play();
+
+            for (int i = (int)countTornado; i > 0; i--)
+            {
+                yield return new WaitForSeconds(1f);
+            }
+
+            // Cleanup
+            if (tornadoEffect != null)
+            {
+                Destroy(tornadoEffect.gameObject);
+                activeEffects.Remove("Tornado");
+            }
         }
-       
-        yield return new WaitForSeconds(TornadoEffect.main.duration);
-        isCountTornado= false;
-        if (TornadoEffect != null) Destroy(TornadoEffect.gameObject);
+
+        isCountTornado = false;
+        
     }
     IEnumerator FreezeRandomBalls()
     {
