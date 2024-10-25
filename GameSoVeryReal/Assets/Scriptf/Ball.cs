@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
+    [Header("Freeze Power-up")]
+    public Material frozenMaterial; 
+    public ParticleSystem FreezeEffect;
+    private List<Ball> frozenBalls = new List<Ball>();
+    private Material originalMaterial;
+    private bool isFrozen = false;
+    private Rigidbody originalRigidbody;
+    
     public Rigidbody rb;
     public bool isMoving;
     public Transform cue;                  // ตัวไม้คิว
@@ -15,9 +23,22 @@ public class Ball : MonoBehaviour
     public ParticleSystem explosionEffect;  
     public ParticleSystem SpeedEffect; 
     public ParticleSystem BounceEffect; 
-    public ParticleSystem HeavyEffect; 
-    public float countdownTime = 3f;        
-    private bool _isCountingDown = false;    
+    public ParticleSystem HeavyEffect;
+    public float whiteballBounce = 1/2;
+    public float countdownTime = 3f;
+    public float countSpeed = 3f;
+    public float countHeavy = 3f;  
+    public float countBouncy = 3f;
+    public float countTornado = 3f;
+    public float countSlip = 3f;
+    public float countSticky = 3f;
+    private bool _isCountingDown = false;
+    private bool isCountSpeed = false;
+    private bool isCountHeavy = false;  
+    private bool isCountBouncy = false;
+    private bool isCountTornado = false;
+    private bool isCountSlip = false;
+    private bool isCountSticky = false;
     private Renderer _ballRenderer;          
     private Collider _ballCollider;
     private float _triggerForce = 0.5f;
@@ -35,39 +56,14 @@ public class Ball : MonoBehaviour
         _ballCollider = GetComponent<Collider>();
         rb.drag = dragValue;
         rb.angularDrag = angularDragValue;
+        originalMaterial = _ballRenderer.material;
+        originalRigidbody = rb;
 
         // หา BilliardsManager เพื่อเรียกใช้เมื่อลูกบอลลงหลุม
         billiardsManager = FindObjectOfType<BilliardsManager>();
     }
 
-    void OnCollisionEnter(Collision collision)
-    {
-        // Check if the collision object is a sphere (or has a tag "Sphere")
-        if (collision.gameObject.CompareTag("Bomb") && !_isCountingDown)
-        {
-            // Make the sphere disappear
-            collision.gameObject.SetActive(false);
-           
-            // Start the countdown and explosion routine
-            StartCoroutine(CountdownAndExplode());
-        }
-        if (collision.gameObject.CompareTag("Speed"))
-        {
-            collision.gameObject.SetActive(false);
-            StartCoroutine(IShowSpeed());
-        }
-        if (collision.gameObject.CompareTag("Heavy"))
-        {
-            collision.gameObject.SetActive(false);
-            
-            StartCoroutine(HeavyBall());
-        }
-        if (collision.gameObject.CompareTag("Bouncy"))
-        {
-            collision.gameObject.SetActive(false);
-            StartCoroutine(BouncyBall());
-        }
-    }
+    
 
     IEnumerator CountdownAndExplode()
     {
@@ -89,80 +85,151 @@ public class Ball : MonoBehaviour
         }
         Instantiate(explosionEffect, ball.transform.position, ball.transform.rotation);
         explosionEffect.Play();
+        
+        yield return new WaitForSeconds(explosionEffect.main.duration);
+        _isCountingDown = false;
     }
 
     IEnumerator IShowSpeed()
     {
+        isCountSpeed = true;
         float originalSpeed = rb.velocity.magnitude;
         rb.velocity *= 1.5f;
         Instantiate(SpeedEffect, ball.transform.position, ball.transform.rotation);
         SpeedEffect.Play();
         
-        float speedBoostDuration = 5f;
-        yield return new WaitForSeconds(5f);
-        
+        for (int i = (int)countSpeed; i > 0; i--)
+        {
+            yield return new WaitForSeconds(1f);
+        } 
         rb.velocity = originalSpeed * rb.velocity.normalized;
+        yield return new WaitForSeconds(SpeedEffect.main.duration);
+        isCountSpeed = false;
+        
     }
     
 
     IEnumerator HeavyBall()
     {
+        isCountHeavy = true;
         float originalMass = rb.mass;
         rb.mass *= 10000;
         
         Instantiate(HeavyEffect, ball.transform.position, ball.transform.rotation);
         HeavyEffect.Play();
         
-        float heavyDuration = 5f;
-        yield return new WaitForSeconds(heavyDuration);
-        rb.mass = originalMass;
-    }
-    IEnumerator BouncyBall()
-    {
-        Collider ballCollider = GetComponent<Collider>();
-        whiteball = ballCollider.sharedMaterial;
-        
-        float originalBounciness = whiteball.bounciness;
-        whiteball.bounciness *= 2;
-        
-        Instantiate(BounceEffect, ball.transform.position, ball.transform.rotation);
-        BounceEffect.Play();
-        if (whiteball.bounciness == 1)
+        for (int i = (int)countHeavy; i > 0; i--)
         {
-            float bouncyDuration = 5f; 
-            yield return new WaitForSeconds(bouncyDuration);
-            whiteball.bounciness = originalBounciness;
+            yield return new WaitForSeconds(1f);
+        }
+        rb.mass = originalMass;
+        yield return new WaitForSeconds(HeavyEffect.main.duration);
+        isCountHeavy = false;
+    }
+    IEnumerator FreezeRandomBalls()
+    {
+        Ball[] allBalls = FindObjectsOfType<Ball>();
+        List<Ball> coloredBalls = new List<Ball>();
+        foreach (Ball b in allBalls)
+        {
+            if (!b.isCueBall && !b.isFrozen)
+            {
+                coloredBalls.Add(b);
+            }
+        }
+        
+        int ballsToFreeze = Mathf.Min(3, coloredBalls.Count);
+        for (int i = 0; i < ballsToFreeze; i++)
+        {
+            int randomIndex = Random.Range(0, coloredBalls.Count);
+            Ball selectedBall = coloredBalls[randomIndex];
+            coloredBalls.RemoveAt(randomIndex);
+            frozenBalls.Add(selectedBall);
+            StartCoroutine(FreezeBall(selectedBall));
+        }
+        yield return new WaitForSeconds(5f);
+        foreach (Ball frozenBall in frozenBalls)
+        {
+            if (frozenBall != null)
+            {
+                UnfreezeBall(frozenBall);
+            }
+        }
+        
+        frozenBalls.Clear();
+    }
+    IEnumerator FreezeBall(Ball ball)
+    {
+        Vector3 originalVelocity = ball.rb.velocity;
+        Vector3 originalAngularVelocity = ball.rb.angularVelocity;
+        ball.isFrozen = true;
+        ball._ballRenderer.material = frozenMaterial;
+        ParticleSystem freezeVFX = Instantiate(FreezeEffect, ball.transform.position, Quaternion.identity);
+        freezeVFX.transform.parent = ball.transform;
+        freezeVFX.Play();
+        ball.rb.velocity = Vector3.zero;
+        ball.rb.angularVelocity = Vector3.zero;
+        ball.rb.constraints = RigidbodyConstraints.FreezeAll;
+        yield return new WaitForSeconds(5f);
+        if (ball != null)
+        {
+            UnfreezeBall(ball);
+        }
+
+        if (freezeVFX != null)
+        {
+            Destroy(freezeVFX.gameObject);
         }
     }
+    private void UnfreezeBall(Ball ball)
+    {
+        ball._ballRenderer.material = ball.originalMaterial;
+        ball.rb.constraints = RigidbodyConstraints.None;
+        ball.isFrozen = false;
+    }
+
+    // IEnumerator BouncyBall()
+    // {
+    //     isCountBouncy = true;
+    //     Collider ballCollider = GetComponent<Collider>();
+    //     whiteball = ballCollider.sharedMaterial;
+    //     whiteball.bounciness = 1/2;
+    //     Instantiate(BounceEffect, ball.transform.position, ball.transform.rotation);
+    //     BounceEffect.Play();
+    //     for (int i = (int)countBouncy; i > 0; i--)
+    //     {
+    //         yield return new WaitForSeconds(1f);
+    //     } 
+    //     whiteball.bounciness = whiteballBounce;
+    //     yield return new WaitForSeconds(BounceEffect.main.duration);
+    //     isCountBouncy = false;
+    // }
 
     private void Update()
     {
-        // Check if the ball is moving
-        float currentVelocity = rb.velocity.magnitude;
-        Debug.Log("Current velocity: " + currentVelocity);
-        
-        if (rb.velocity.magnitude > ballStopThreshold)
+        if (!isFrozen)
         {
-            isMoving = true;
-        }
-        else
-        {
-            isMoving = false;
-        }
+            float currentVelocity = rb.velocity.magnitude;
+            Debug.Log("Current velocity: " + currentVelocity);
+            
+            if (rb.velocity.magnitude > ballStopThreshold)
+            {
+                isMoving = true;
+            }
+            else
+            {
+                isMoving = false;
+            }
 
-        if (isMoving)
-        {
-            //Debug.Log("Ball is moving");
-            HideCue();
-            
+            if (isMoving)
+            {
+                HideCue();
+            }
+            else if (!isMoving)
+            {
+                ShowCue();
+            }
         }
-        else if (!isMoving)
-        {
-            //Debug.Log("Ball has stopped");
-            ShowCue();
-            
-        }
-        
         
         // ตรวจสอบการปล่อยเมาส์ขวา
         if (Input.GetMouseButtonUp(0))
@@ -178,8 +245,8 @@ public class Ball : MonoBehaviour
         }
         //Debug.Log(rb.velocity.magnitude);
         Debug.Log(isMouseReleased);
+        
     }
-
     
     // Coroutine ที่จะดีเลย์ 1 วินาทีก่อนตั้งค่า isMouseReleased = true;
     IEnumerator DelayMouseRelease()
@@ -240,6 +307,31 @@ public class Ball : MonoBehaviour
                 }
             }
         }
+        if (other.CompareTag("Bomb") && !_isCountingDown)
+        {
+            other.gameObject.SetActive(false);
+            StartCoroutine(CountdownAndExplode());
+        }
+        if (other.CompareTag("Speed"))
+        {
+            other.gameObject.SetActive(false);
+            StartCoroutine(IShowSpeed());
+        }
+        if (other.CompareTag("Heavy"))
+        {
+            other.gameObject.SetActive(false);
+            StartCoroutine(HeavyBall());
+        }
+        if (other.CompareTag("Freeze") && isCueBall)
+        {
+            other.gameObject.SetActive(false);
+            StartCoroutine(FreezeRandomBalls());
+        }
+        // if (other.CompareTag("Bouncy"))
+        // {
+        //     other.gameObject.SetActive(false);
+        //     StartCoroutine(BouncyBall());
+        // }
     }
 
     private void StopBall()

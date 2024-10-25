@@ -13,6 +13,10 @@ TagManager:
   - Speed
   - Heavy
   - Bouncy
+  - Freeze
+  - Tornado
+  - Slip
+  - Sticky
   layers:
   - Default
   - TransparentFX
@@ -25,13 +29,13 @@ TagManager:
   - Cue
   - Ball
   - BG
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Bomb
+  - Speed
+  - Heavy
+  - Bouncy
+  - Tornado
+  - Slip
+  - Sticky
   - 
   - 
   - 
