@@ -24,12 +24,13 @@ public class Ball : MonoBehaviour
     public ParticleSystem SpeedEffect; 
     public ParticleSystem BounceEffect; 
     public ParticleSystem HeavyEffect;
+    public ParticleSystem TornadoEffect;
     public float whiteballBounce = 1/2;
     public float countdownTime = 3f;
     public float countSpeed = 3f;
     public float countHeavy = 3f;  
     public float countBouncy = 3f;
-    public float countTornado = 3f;
+    public float countTornado = 5f;
     public float countSlip = 3f;
     public float countSticky = 3f;
     private bool _isCountingDown = false;
@@ -83,11 +84,14 @@ public class Ball : MonoBehaviour
             if (rb == null) continue;
             rb.AddExplosionForce(_explosionForce, transform.position, _explosionRadius);
         }
-        Instantiate(explosionEffect, ball.transform.position, ball.transform.rotation);
-        explosionEffect.Play();
+        ParticleSystem explosion = Instantiate(explosionEffect, ball.transform.position, ball.transform.rotation);
+        explosion.transform.parent = ball.transform;
+        explosion.Play();
         
+        if (explosion != null) Destroy(explosion.gameObject);
         yield return new WaitForSeconds(explosionEffect.main.duration);
         _isCountingDown = false;
+       
     }
 
     IEnumerator IShowSpeed()
@@ -95,17 +99,21 @@ public class Ball : MonoBehaviour
         isCountSpeed = true;
         float originalSpeed = rb.velocity.magnitude;
         rb.velocity *= 1.5f;
-        Instantiate(SpeedEffect, ball.transform.position, ball.transform.rotation);
-        SpeedEffect.Play();
+        ParticleSystem Speed = Instantiate(SpeedEffect, ball.transform.position, ball.transform.rotation);
+        Speed.transform.parent = ball.transform;
+        Speed.Play(); 
+       
         
         for (int i = (int)countSpeed; i > 0; i--)
         {
             yield return new WaitForSeconds(1f);
-        } 
+        }
         rb.velocity = originalSpeed * rb.velocity.normalized;
+        if (Speed != null) Destroy(Speed.gameObject);
+        
         yield return new WaitForSeconds(SpeedEffect.main.duration);
         isCountSpeed = false;
-        
+       
     }
     
 
@@ -115,16 +123,34 @@ public class Ball : MonoBehaviour
         float originalMass = rb.mass;
         rb.mass *= 10000;
         
-        Instantiate(HeavyEffect, ball.transform.position, ball.transform.rotation);
-        HeavyEffect.Play();
+        ParticleSystem Heavy = Instantiate(HeavyEffect, ball.transform.position, ball.transform.rotation);
+        Heavy.transform.parent = ball.transform;
+        Heavy.Play();
         
         for (int i = (int)countHeavy; i > 0; i--)
         {
             yield return new WaitForSeconds(1f);
         }
         rb.mass = originalMass;
+        if (Heavy != null) Destroy(Heavy.gameObject);
         yield return new WaitForSeconds(HeavyEffect.main.duration);
         isCountHeavy = false;
+      
+    }
+    IEnumerator FireTornado()
+    {
+        isCountTornado = true;
+        Instantiate(TornadoEffect, ball.transform.position, ball.transform.rotation);
+        TornadoEffect.transform.parent = ball.transform;
+        TornadoEffect.Play();
+        for (int i = (int)countTornado; i > 0; i--)
+        {
+            yield return new WaitForSeconds(1f);  
+        }
+       
+        yield return new WaitForSeconds(TornadoEffect.main.duration);
+        isCountTornado= false;
+        if (TornadoEffect != null) Destroy(TornadoEffect.gameObject);
     }
     IEnumerator FreezeRandomBalls()
     {
@@ -187,6 +213,8 @@ public class Ball : MonoBehaviour
         ball.rb.constraints = RigidbodyConstraints.None;
         ball.isFrozen = false;
     }
+
+    
 
     // IEnumerator BouncyBall()
     // {
@@ -326,6 +354,12 @@ public class Ball : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             StartCoroutine(FreezeRandomBalls());
+        }
+
+        if (other.CompareTag("Tornado"))
+        {
+            other.gameObject.SetActive(false);
+            StartCoroutine(FireTornado());
         }
         // if (other.CompareTag("Bouncy"))
         // {
