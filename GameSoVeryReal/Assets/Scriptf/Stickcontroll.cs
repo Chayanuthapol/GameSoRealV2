@@ -22,10 +22,11 @@ public class StickController : MonoBehaviour
     private Vector3 hitDirection;
     private bool isBallMoving = false;
     private bool isChargingPower = false; // กำลังชาร์จค่าความแรงหรือไม่
+    
 
-
-    private void Start()
+    void Start()
     {
+       
         
     }
 
@@ -54,6 +55,7 @@ public class StickController : MonoBehaviour
                 isChargingPower = false;
                 powerParticle.Stop(); // หยุดพาร์ติเคิลหลังจากตีลูกบอล
                 // ตรวจสอบความเร็วของลูกบอล
+                
                 
             }
 
@@ -119,6 +121,7 @@ public class StickController : MonoBehaviour
         ball.Hit(hitDirection * powerSlider.value);
         Debug.Log("Hit");
         Debug.Log(cueBall.rb.velocity.magnitude);
+        
     }
 
     private void ResetPower()

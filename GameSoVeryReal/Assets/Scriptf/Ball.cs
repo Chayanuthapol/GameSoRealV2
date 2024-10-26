@@ -23,8 +23,8 @@ public class Ball : MonoBehaviour
     public float dragValue = 0.5f;  // ปรับค่า Drag ตามความเหมาะสม
     public float angularDragValue = 0.5f;  // ปรับค่า Angular Drag
     public bool isCueBall = true;  // ตรวจสอบว่าเป็นลูกบอลสีขาว
-    private bool isMouseReleased = false; 
-
+    private bool isMouseReleased = false;
+    public AudioSource strikesound;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -35,6 +35,8 @@ public class Ball : MonoBehaviour
 
         // หา BilliardsManager เพื่อเรียกใช้เมื่อลูกบอลลงหลุม
         billiardsManager = FindObjectOfType<BilliardsManager2>();
+        
+        strikesound = GetComponent<AudioSource>();
     }
 
     void OnCollisionEnter(Collision collision)
@@ -131,6 +133,7 @@ public class Ball : MonoBehaviour
     {
         
         rb.AddForce(force, ForceMode.Impulse);
+        strikesound.Play();
     }
 
     public bool IsBallMoving()

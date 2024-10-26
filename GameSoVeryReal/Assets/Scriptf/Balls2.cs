@@ -8,6 +8,8 @@ public class Balls2 :  MonoBehaviour
     public FeedbackManager feedbackManager; // ลิงก์ไปยัง FeedbackManager
     public GameObject audioSourceObject; // อ้างอิงไปยัง GameObject ที่มี AudioSource
     private AudioSource audioSource;  // ตัวแปรเก็บ AudioSource
+   
+
 
     private void Start()
     {
@@ -18,6 +20,8 @@ public class Balls2 :  MonoBehaviour
         {
             Debug.LogError("AudioSource is missing! Please add an AudioSource to the object.");
         }
+
+       
     }
 
     private void OnTriggerEnter(Collider other)
@@ -39,4 +43,5 @@ public class Balls2 :  MonoBehaviour
             
         }
     }
+    
 }
