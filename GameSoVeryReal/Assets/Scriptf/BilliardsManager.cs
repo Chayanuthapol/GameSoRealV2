@@ -12,6 +12,7 @@ public class BilliardsManager : MonoBehaviour
     public static BilliardsManager Instance;
     public int WinScore;
     
+    public Transform image, image2,image3,image4;
     // อ้างอิง UI
     public TextMeshProUGUI playerScoreText1; // Text แสดงคะแนนผู้เล่น 1
     public TextMeshProUGUI playerScoreText2; // Text แสดงคะแนนผู้เล่น 2
@@ -105,7 +106,28 @@ public class BilliardsManager : MonoBehaviour
             // อัปเดต UI เมื่อเปลี่ยนเทิร์น
             UpdateUI();
             PlayerUI();
-        
+            
+            if (currentPlayer == 0)
+            {
+                image.gameObject.SetActive(true);
+                image2.gameObject.SetActive(false);
+            }
+            else
+            {
+                image.gameObject.SetActive(false);
+                image2.gameObject.SetActive(true);
+            }
+            
+            if (currentPlayer == 1)
+            {
+                image3.gameObject.SetActive(false);
+                image4.gameObject.SetActive(true);
+            }
+            else
+            {
+                image3.gameObject.SetActive(true);
+                image4.gameObject.SetActive(false);
+            }
         
     }
 

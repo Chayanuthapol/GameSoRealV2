@@ -17,7 +17,7 @@ public class BallCollision : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         // ตรวจสอบการชนกับ GameObject อื่น
-        if (collision.gameObject.CompareTag("Ball"))
+        if (collision.gameObject.CompareTag("Ball") || collision.gameObject.CompareTag("WhiteBall"))
         {
             // เล่นเสียงเมื่อเกิดการชน
             audioSource.Play();
