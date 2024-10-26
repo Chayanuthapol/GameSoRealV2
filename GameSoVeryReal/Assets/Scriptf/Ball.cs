@@ -4,76 +4,66 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    [Header("Freeze Power-up")] public Material frozenMaterial;
+    [Header("Freeze Power-up")]
+    public Material frozenMaterial; 
     public ParticleSystem FreezeEffect;
     private List<Ball> frozenBalls = new List<Ball>();
     private Material originalMaterial;
     private bool isFrozen = false;
     private Rigidbody originalRigidbody;
-
-    [Header("Surface Power-ups")] public Material slipperyMaterial;
+    
+    [Header("Surface Power-ups")]
+    public Material slipperyMaterial;
     public Material stickyMaterial;
     public float slipperyDragMultiplier = 0.1f; // Lower drag for slippery effect
-    public float stickyDragMultiplier = 5f; // Higher drag for sticky effect
+    public float stickyDragMultiplier = 5f;     // Higher drag for sticky effect
     private Material originalFloorMaterial;
     private float originalFloorDrag;
 
-
+    
     public Rigidbody rb;
     public bool isMoving;
-    public Transform cue; // ตัวไม้คิว
-    public Ball ball; // ลูกบอล
+    public Transform cue;                  // ตัวไม้คิว
+    public Ball ball;                      // ลูกบอล
     public LineRenderer aimLineRenderer;
     public float ballStopThreshold = 0.2f;
     private BilliardsManager billiardsManager;
     public PhysicMaterial whiteball;
-    public ParticleSystem explosionEffect;
-    public ParticleSystem SpeedEffect;
-    public ParticleSystem BounceEffect;
+    public ParticleSystem explosionEffect;  
+    public ParticleSystem SpeedEffect; 
+    public ParticleSystem BounceEffect; 
     public ParticleSystem HeavyEffect;
-
     public ParticleSystem TornadoEffect;
-
     // public float whiteballBounce = 1/2;
     public float countdownTime = 3f;
     public float countSpeed = 3f;
-    public float countHeavy = 3f;
+    public float countHeavy = 3f;  
     public float countBouncy = 3f;
     public float countTornado = 5f;
     public float countSlip = 3f;
     public float countSticky = 3f;
     private bool _isCountingDown = false;
     private bool isCountSpeed = false;
-    private bool isCountHeavy = false;
+    private bool isCountHeavy = false;  
     private bool isCountBouncy = false;
     private bool isCountTornado = false;
     private bool isCountSlip = false;
     private bool isCountSticky = false;
-    private Renderer _ballRenderer;
+    private Renderer _ballRenderer;          
     private Collider _ballCollider;
     private float _triggerForce = 0.5f;
     private float _explosionRadius = 5;
     private float _explosionForce = 10;
-    public float dragValue = 0.5f; // ปรับค่า Drag ตามความเหมาะสม
-    public float angularDragValue = 0.5f; // ปรับค่า Angular Drag
-    public bool isCueBall = true; // ตรวจสอบว่าเป็นลูกบอลสีขาว
-    private bool isMouseReleased = false;
-    public AudioSource strikesound;
-    public AudioSource dropsound;
-    public bool isPocket = false;
-
-    // public AudioSource explosionsound;
-    // public AudioSource freezesound;
-    // public AudioSource heavysound;
-    // public AudioSource slipperysound;
-    // public AudioSource speedsound;
-    // public AudioSource stickysound;
-    // public AudioSource tornadosound;
+    public float dragValue = 0.5f;  // ปรับค่า Drag ตามความเหมาะสม
+    public float angularDragValue = 0.5f;  // ปรับค่า Angular Drag
+    public bool isCueBall = true;  // ตรวจสอบว่าเป็นลูกบอลสีขาว
+    private bool isMouseReleased = false; 
     
     private Dictionary<string, ParticleSystem> activeEffects = new Dictionary<string, ParticleSystem>();
 
     private void Start()
     {
+        StartCoroutine(DelayPlay());
         rb = GetComponent<Rigidbody>();
         _ballRenderer = GetComponent<Renderer>();
         _ballCollider = GetComponent<Collider>();
@@ -88,14 +78,19 @@ public class Ball : MonoBehaviour
             originalFloorMaterial = floor.GetComponent<Renderer>().material;
             originalFloorDrag = floor.GetComponent<Collider>().material.dynamicFriction;
         }
-
+        
         // หา BilliardsManager เพื่อเรียกใช้เมื่อลูกบอลลงหลุม
         billiardsManager = FindObjectOfType<BilliardsManager>();
-
-        strikesound = GetComponent<AudioSource>();
     }
 
-
+    IEnumerator DelayPlay()
+    {
+        cue.gameObject.SetActive(false); // ซ่อนไม้คิว
+        aimLineRenderer.enabled = false;
+        yield return new WaitForSeconds(4);
+        cue.gameObject.SetActive(true); // แสดงไม้คิว
+        aimLineRenderer.enabled = true; // เปิดใช้งานเส้นทิศทางอีกครั้ง
+    }
 
     IEnumerator CountdownAndExplode()
     {
@@ -105,8 +100,8 @@ public class Ball : MonoBehaviour
         // Countdown from 3 to 1
         for (int i = (int)countdownTime; i > 0; i--)
         {
-            Debug.Log(i);
-            yield return new WaitForSeconds(1f);
+            Debug.Log(i);  
+            yield return new WaitForSeconds(1f);  
         }
 
         foreach (var obj in surroundingObjects)
@@ -115,7 +110,6 @@ public class Ball : MonoBehaviour
             if (rb == null) continue;
             rb.AddExplosionForce(_explosionForce, transform.position, _explosionRadius);
         }
-
         if (explosionEffect != null)
         {
             ParticleSystem explosion = Instantiate(explosionEffect);
@@ -158,17 +152,16 @@ public class Ball : MonoBehaviour
                 activeEffects.Remove("Speed");
             }
         }
-
         isCountSpeed = false;
     }
-
+    
 
     IEnumerator HeavyBall()
     {
         isCountHeavy = true;
         float originalMass = rb.mass;
         rb.mass *= 10000;
-
+        
         if (HeavyEffect != null)
         {
             ParticleSystem heavyEffect = Instantiate(HeavyEffect);
@@ -193,9 +186,8 @@ public class Ball : MonoBehaviour
         }
 
         isCountHeavy = false;
-
+      
     }
-
     IEnumerator FireTornado()
     {
         isCountTornado = true;
@@ -203,7 +195,7 @@ public class Ball : MonoBehaviour
         {
             ParticleSystem tornadoEffect = Instantiate(TornadoEffect);
             tornadoEffect.transform.position = ball.transform.position;
-
+            
             activeEffects["Tornado"] = tornadoEffect;
             tornadoEffect.Play();
 
@@ -221,9 +213,8 @@ public class Ball : MonoBehaviour
         }
 
         isCountTornado = false;
-
+        
     }
-
     IEnumerator FreezeRandomBalls()
     {
         Ball[] allBalls = FindObjectsOfType<Ball>();
@@ -235,7 +226,7 @@ public class Ball : MonoBehaviour
                 coloredBalls.Add(b);
             }
         }
-
+        
         int ballsToFreeze = Mathf.Min(3, coloredBalls.Count);
         for (int i = 0; i < ballsToFreeze; i++)
         {
@@ -245,7 +236,6 @@ public class Ball : MonoBehaviour
             frozenBalls.Add(selectedBall);
             StartCoroutine(FreezeBall(selectedBall));
         }
-
         yield return new WaitForSeconds(5f);
         foreach (Ball frozenBall in frozenBalls)
         {
@@ -254,10 +244,9 @@ public class Ball : MonoBehaviour
                 UnfreezeBall(frozenBall);
             }
         }
-
+        
         frozenBalls.Clear();
     }
-
     IEnumerator FreezeBall(Ball ball)
     {
         Vector3 originalVelocity = ball.rb.velocity;
@@ -281,7 +270,6 @@ public class Ball : MonoBehaviour
             Destroy(freezeVFX.gameObject);
         }
     }
-
     private void UnfreezeBall(Ball ball)
     {
         ball._ballRenderer.material = ball.originalMaterial;
@@ -293,27 +281,27 @@ public class Ball : MonoBehaviour
     {
         isCountSlip = true;
         GameObject floor = GameObject.FindGameObjectWithTag("Floor");
-
+        
         if (floor != null)
         {
             // Store original properties
             Renderer floorRenderer = floor.GetComponent<Renderer>();
             PhysicMaterial floorPhysics = floor.GetComponent<Collider>().material;
-
+            
             // Apply slippery properties
             floorRenderer.material = slipperyMaterial;
             floorPhysics.dynamicFriction *= slipperyDragMultiplier;
             floorPhysics.staticFriction *= slipperyDragMultiplier;
-
+            
             // Wait for duration
             yield return new WaitForSeconds(countSlip);
-
+            
             // Restore original properties
             floorRenderer.material = originalFloorMaterial;
             floorPhysics.dynamicFriction = originalFloorDrag;
             floorPhysics.staticFriction = originalFloorDrag;
         }
-
+        
         isCountSlip = false;
     }
 
@@ -321,27 +309,27 @@ public class Ball : MonoBehaviour
     {
         isCountSticky = true;
         GameObject floor = GameObject.FindGameObjectWithTag("Floor");
-
+        
         if (floor != null)
         {
             // Store original properties
             Renderer floorRenderer = floor.GetComponent<Renderer>();
             PhysicMaterial floorPhysics = floor.GetComponent<Collider>().material;
-
+            
             // Apply sticky properties
             floorRenderer.material = stickyMaterial;
             floorPhysics.dynamicFriction *= stickyDragMultiplier;
             floorPhysics.staticFriction *= stickyDragMultiplier;
-
+            
             // Wait for duration
             yield return new WaitForSeconds(countSticky);
-
+            
             // Restore original properties
             floorRenderer.material = originalFloorMaterial;
             floorPhysics.dynamicFriction = originalFloorDrag;
             floorPhysics.staticFriction = originalFloorDrag;
         }
-
+        
         isCountSticky = false;
     }
 
@@ -368,7 +356,7 @@ public class Ball : MonoBehaviour
         {
             float currentVelocity = rb.velocity.magnitude;
             Debug.Log("Current velocity: " + currentVelocity);
-
+            
             if (rb.velocity.magnitude > ballStopThreshold)
             {
                 isMoving = true;
@@ -387,48 +375,46 @@ public class Ball : MonoBehaviour
                 ShowCue();
             }
         }
-
+        
         // ตรวจสอบการปล่อยเมาส์ขวา
         if (Input.GetMouseButtonUp(0))
         {
             StartCoroutine(DelayMouseRelease()); // เริ่ม Coroutine สำหรับดีเลย์ 1 วินาที
         }
-
+            
         // ตรวจสอบความเร็วของลูกบอลหลังจากปล่อยเมาส์ขวา
         if (isMouseReleased && rb.velocity.magnitude <= ballStopThreshold)
         {
             billiardsManager.EndTurn();
             isMouseReleased = false; // รีเซ็ตสถานะเมาส์เพื่อไม่ให้ฟังก์ชันถูกเรียกซ้ำ
         }
-
         //Debug.Log(rb.velocity.magnitude);
         Debug.Log(isMouseReleased);
-
+        
     }
-
+    
     // Coroutine ที่จะดีเลย์ 1 วินาทีก่อนตั้งค่า isMouseReleased = true;
     IEnumerator DelayMouseRelease()
     {
         yield return new WaitForSeconds(1f); // รอ 1 วินาที
         isMouseReleased = true;
     }
-
-
+    
+    
     // Apply force to hit the ball
     public void Hit(Vector3 force)
     {
-
+        
         rb.AddForce(force, ForceMode.Impulse);
-        strikesound.Play();
     }
 
     public bool IsBallMoving()
     {
         float velocityMagnitude = rb.velocity.magnitude;
-
+        
         return rb.velocity.magnitude > ballStopThreshold;
     }
-
+    
     private void HideCue()
     {
         cue.gameObject.SetActive(false); // ซ่อนไม้คิว
@@ -465,108 +451,55 @@ public class Ball : MonoBehaviour
                     billiardsManager.BallPocketed(gameObject, pocketPosition);
                 }
             }
-            
-            isPocket = true;
-            if (dropsound != null && dropsound.clip != null)
-            {
-                dropsound.Play(); // เล่นเสียงเมื่อบอลลงหลุม
-            }
-
-            if (other.CompareTag("Bomb") && !_isCountingDown)
-            {
-                other.gameObject.SetActive(false);
-                StartCoroutine(CountdownAndExplode());
-                
-                // if (explosionsound != null && explosionsound.clip != null)
-                // {
-                //     explosionsound.Play();
-                // }
-                Debug.Log("Kuay");
-            }
-
-            if (other.CompareTag("Speed") && !isCountSpeed)
-            {
-                other.gameObject.SetActive(false);
-                StartCoroutine(IShowSpeed());
-                // if (speedsound != null && speedsound.clip != null)
-                // {
-                //     speedsound.Play();
-                // }
-                Debug.Log("Kuay");
-                
-            }
-
-            if (other.CompareTag("Heavy") && !isCountHeavy)
-            {
-                other.gameObject.SetActive(false);
-                StartCoroutine(HeavyBall());
-               
-                // if (heavysound != null && heavysound.clip != null)
-                // {
-                //     heavysound.Play();
-                // }
-                Debug.Log("Kuay");
-            }
-
-            if (other.CompareTag("Freeze") && isCueBall)
-            {
-                other.gameObject.SetActive(false);
-                StartCoroutine(FreezeRandomBalls());
-                
-                // if (freezesound != null && freezesound.clip != null)
-                // {
-                //     freezesound.Play();
-                // }
-                Debug.Log("Kuay");
-            }
-
-            if (other.CompareTag("Tornado") && !isCountTornado)
-            {
-                other.gameObject.SetActive(false);
-                StartCoroutine(FireTornado());
-                
-                // if (tornadosound != null && tornadosound.clip != null)
-                // {
-                //     tornadosound.Play();
-                // }
-                Debug.Log("Kuay");
-            }
-
-            if (other.CompareTag("Slip") && !isCountSlip)
-            {
-                other.gameObject.SetActive(false);
-                StartCoroutine(SlipperyEffect());
-                
-                // if (slipperysound != null && slipperysound.clip != null)
-                // {
-                //     slipperysound.Play();
-                // }
-                Debug.Log("Kuay");
-            }
-
-            if (other.CompareTag("Sticky") && !isCountSticky)
-            {
-                other.gameObject.SetActive(false);
-                StartCoroutine(StickyEffect());
-                
-                // if (stickysound != null && stickysound.clip != null)
-                // {
-                //     stickysound.Play();
-                // }
-                Debug.Log("Kuay");
-            }
-            // if (other.CompareTag("Bouncy"))
-            // {
-            //     other.gameObject.SetActive(false);
-            //     StartCoroutine(BouncyBall());
-            // }
         }
-
-        void StopBall()
+        if (other.CompareTag("Bomb") && !_isCountingDown)
         {
-            // หยุดการเคลื่อนที่ของลูกบอลสีขาวโดยการตั้งค่า velocity และ angularVelocity เป็น 0
-            rb.velocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero;
+            other.gameObject.SetActive(false);
+            StartCoroutine(CountdownAndExplode());
         }
+        if (other.CompareTag("Speed") && !isCountSpeed)
+        {
+            other.gameObject.SetActive(false);
+            StartCoroutine(IShowSpeed());
+        }
+        if (other.CompareTag("Heavy") && !isCountHeavy)
+        {
+            other.gameObject.SetActive(false);
+            StartCoroutine(HeavyBall());
+        }
+        if (other.CompareTag("Freeze") && isCueBall)
+        {
+            other.gameObject.SetActive(false);
+            StartCoroutine(FreezeRandomBalls());
+        }
+
+        if (other.CompareTag("Tornado") && !isCountTornado)
+        {
+            other.gameObject.SetActive(false);
+            StartCoroutine(FireTornado());
+        }
+        if (other.CompareTag("Slip") && !isCountSlip)
+        {
+            other.gameObject.SetActive(false);
+            StartCoroutine(SlipperyEffect());
+        }
+
+        if (other.CompareTag("Sticky") && !isCountSticky)
+        {
+            other.gameObject.SetActive(false);
+            StartCoroutine(StickyEffect());
+        }
+        // if (other.CompareTag("Bouncy"))
+        // {
+        //     other.gameObject.SetActive(false);
+        //     StartCoroutine(BouncyBall());
+        // }
+    }
+
+    private void StopBall()
+    {
+        // หยุดการเคลื่อนที่ของลูกบอลสีขาวโดยการตั้งค่า velocity และ angularVelocity เป็น 0
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
     }
 }
