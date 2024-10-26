@@ -15,6 +15,7 @@ public class BilliardsManager : MonoBehaviour
     public TextMeshProUGUI playerScoreText1; // Text แสดงคะแนนผู้เล่น 1
     public TextMeshProUGUI playerScoreText2; // Text แสดงคะแนนผู้เล่น 2
     public TextMeshProUGUI turnText;         // Text แสดงเทิร์นของผู้เล่นปัจจุบัน
+    public TextMeshProUGUI winText; // Text สำหรับแสดงผลว่าใครชนะ
 
     // Particle System
     public ParticleSystem pocketParticle;    // พาร์ติเคิลที่จะแสดงเมื่อมีลูกบอลตกลงหลุม
@@ -26,6 +27,10 @@ public class BilliardsManager : MonoBehaviour
 
     private void Start()
     {
+        
+        // ซ่อน winText เมื่อเริ่มเกม
+        winText.gameObject.SetActive(false);
+        
         // อัปเดต UI เริ่มต้น
         UpdateUI();
         PlayerUI();
@@ -95,7 +100,7 @@ public class BilliardsManager : MonoBehaviour
             // เปลี่ยนเทิร์นปกติ
             currentPlayer = (currentPlayer + 1) % 2;
             Debug.Log("Switching to Player " + (currentPlayer + 1));
-
+            
             // อัปเดต UI เมื่อเปลี่ยนเทิร์น
             UpdateUI();
             PlayerUI();
@@ -108,6 +113,16 @@ public class BilliardsManager : MonoBehaviour
         // อัปเดต Text ของคะแนนผู้เล่น
         playerScoreText1.text = "Player 1: " + playerScores[0];
         playerScoreText2.text = "Player 2: " + playerScores[1];
+
+        // ตรวจสอบว่าผู้เล่นคนใดมีคะแนนครบ 8
+        if (playerScores[0] >= 8)
+        {
+            ShowWinMessage(1); // ผู้เล่น 1 ชนะ
+        }
+        else if (playerScores[1] >= 8)
+        {
+            ShowWinMessage(2); // ผู้เล่น 2 ชนะ
+        }
     }
 
     private void PlayerUI()
@@ -122,5 +137,15 @@ public class BilliardsManager : MonoBehaviour
         {
             Instance = this;
         }
+    }
+    
+    private void ShowWinMessage(int playerNumber)
+    {
+        // แสดงผลข้อความว่าใครชนะ
+        winText.text = "Player " + playerNumber + " Wins!";
+        winText.gameObject.SetActive(true); // เปิดการแสดงผลข้อความ
+
+        // หยุดเกม (อาจใช้วิธีปิดการควบคุมต่าง ๆ หรือหยุดการทำงานอื่น ๆ)
+        Time.timeScale = 0f; // หยุดเวลาของเกม
     }
 }
