@@ -85939,10 +85939,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frozenMaterial: {fileID: 2100000, guid: e3a7173add3dfb34c8d21646c31d53a2, type: 2}
   FreezeEffect: {fileID: 5935687898360078945, guid: e27cbbdbcf8c1514391b2ee422bc98b6, type: 3}
-  slipperyMaterial: {fileID: 0}
-  stickyMaterial: {fileID: 0}
-  slipperyDragMultiplier: 0.1
-  stickyDragMultiplier: 5
+  slipperyMaterial: {fileID: 2100000, guid: 8d7889a658ec73f41abaef0384327f8f, type: 2}
+  stickyMaterial: {fileID: 2100000, guid: 32c66db19e63a1c44bfc5e3ca59d8c1e, type: 2}
+  slipperyDragMultiplier: 0.01
+  stickyDragMultiplier: 10
   rb: {fileID: 1851135987}
   isMoving: 0
   cue: {fileID: 1851135986}
@@ -85960,8 +85960,8 @@ MonoBehaviour:
   countHeavy: 3
   countBouncy: 3
   countTornado: 5
-  countSlip: 3
-  countSticky: 3
+  countSlip: 5
+  countSticky: 5
   dragValue: 0.5
   angularDragValue: 0.5
   isCueBall: 1

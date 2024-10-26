@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1578619520683736344}
   - component: {fileID: 2708637889481212475}
   - component: {fileID: 7863046908207703558}
-  - component: {fileID: 4105017988568292406}
+  - component: {fileID: -3287127872305490906}
   m_Layer: 11
   m_Name: SlipBall
   m_TagString: Slip
@@ -134,7 +134,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &4105017988568292406
+--- !u!114 &-3287127872305490906
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,13 +143,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 106418400903281908}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb6f3656451c49bea1e182786fd6cf17, type: 3}
+  m_Script: {fileID: 11500000, guid: d3e2c1b9e4724b2eaa78033cbc9374ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  effectDuration: 5
-  powerUpMaterial: {fileID: 2100000, guid: 8d7889a658ec73f41abaef0384327f8f, type: 2}
-  frictionMultiplier: 0.1
-  activationEffect: {fileID: 0}
-  rotateInPlace: 1
-  rotationSpeed: 100
+  rotationSpeed: 90
+  bobSpeed: 1
+  bobHeight: 0.1
+  glowColor: {r: 0, g: 0.2508695, b: 0.8018868, a: 1}
+  powerupLight: {fileID: 0}
+  whiteballRb: {fileID: 0}
+  ballMovingThreshold: 0.01
+  respawnDelay: 0.01

@@ -149,7 +149,7 @@ MonoBehaviour:
   rotationSpeed: 90
   bobSpeed: 1
   bobHeight: 0.1
-  glowColor: {r: 0.7924528, g: 0.13016133, b: 0, a: 1}
+  glowColor: {r: 0.4528302, g: 0.07397722, b: 0, a: 1}
   powerupLight: {fileID: 0}
   whiteballRb: {fileID: 0}
   ballMovingThreshold: 0.01

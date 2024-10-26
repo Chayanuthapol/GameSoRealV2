@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1241234337668797034}
   - component: {fileID: 7342365449724851096}
   - component: {fileID: 5086236349995023609}
-  - component: {fileID: -3346984822779315160}
+  - component: {fileID: 1360820884201728031}
   m_Layer: 11
   m_Name: StickyBall
   m_TagString: Sticky
@@ -134,7 +134,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-3346984822779315160
+--- !u!114 &1360820884201728031
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,13 +143,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 3972350202283221874}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb6f3656451c49bea1e182786fd6cf17, type: 3}
+  m_Script: {fileID: 11500000, guid: d3e2c1b9e4724b2eaa78033cbc9374ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  effectDuration: 5
-  powerUpMaterial: {fileID: 2100000, guid: 32c66db19e63a1c44bfc5e3ca59d8c1e, type: 2}
-  frictionMultiplier: 5
-  activationEffect: {fileID: 0}
-  rotateInPlace: 1
-  rotationSpeed: 100
+  rotationSpeed: 90
+  bobSpeed: 1
+  bobHeight: 0.1
+  glowColor: {r: 0.6332394, g: 1, b: 0.33490568, a: 1}
+  powerupLight: {fileID: 0}
+  whiteballRb: {fileID: 0}
+  ballMovingThreshold: 0.01
+  respawnDelay: 0.01

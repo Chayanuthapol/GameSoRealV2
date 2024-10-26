@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7232010418737245785}
   - component: {fileID: 479831182875031963}
   - component: {fileID: 2999883735713266198}
-  - component: {fileID: 3485832560274645608}
+  - component: {fileID: -5652248680891603087}
   m_Layer: 12
   m_Name: Speed
   m_TagString: Speed
@@ -135,7 +135,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3485832560274645608
+--- !u!114 &-5652248680891603087
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -150,11 +150,11 @@ MonoBehaviour:
   rotationSpeed: 90
   bobSpeed: 1
   bobHeight: 0.1
-  glowColor: {r: 0.8784314, g: 0.3541471, b: 0, a: 1}
+  glowColor: {r: 1, g: 0.5475759, b: 0.25098038, a: 1}
   powerupLight: {fileID: 0}
   whiteballRb: {fileID: 0}
   ballMovingThreshold: 0.01
-  respawnDelay: 1
+  respawnDelay: 0.01
 --- !u!1 &3309671360795974693
 GameObject:
   m_ObjectHideFlags: 0
