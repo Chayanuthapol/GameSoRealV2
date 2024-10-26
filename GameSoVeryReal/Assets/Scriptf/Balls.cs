@@ -67,8 +67,6 @@ public class Balls : MonoBehaviour
         } 
         if (other.CompareTag("Freeze"))
         {
-           
-            FreezePowerUpManager.Instance.ActivateFreezePowerUp();
             Destroy(other.gameObject);
         }
     }

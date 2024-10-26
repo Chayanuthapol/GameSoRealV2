@@ -4843,7 +4843,7 @@ GameObject:
   - component: {fileID: 5232025919393216042}
   - component: {fileID: 468351029535928745}
   - component: {fileID: 4521563954597565294}
-  - component: {fileID: -6289954726037919386}
+  - component: {fileID: 2479845568662179084}
   m_Layer: 11
   m_Name: Freeze
   m_TagString: Freeze
@@ -4860,7 +4860,7 @@ Transform:
   m_GameObject: {fileID: 7509250635507209878}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 2.17, y: 1.279, z: -5.9940186}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.48375, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4965,7 +4965,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-6289954726037919386
+--- !u!114 &2479845568662179084
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4977,12 +4977,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 027ca3c98e964b5a87b56abdc73bbc88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  freezeMaterial: {fileID: 2100000, guid: e3a7173add3dfb34c8d21646c31d53a2, type: 2}
+  freezeDuration: 5
+  frozenFriction: 0.1
   rotationSpeed: 90
   bobSpeed: 1
   bobHeight: 0.1
-  lifetime: 15
-  glowColor: {r: 0, g: 1, b: 1, a: 1}
+  glowColor: {r: 0.4575472, g: 0.9533016, b: 1, a: 1}
   powerupLight: {fileID: 0}
   whiteballRb: {fileID: 0}
   ballMovingThreshold: 0.01
-  respawnDelay: 1
+  respawnDelay: 0.01

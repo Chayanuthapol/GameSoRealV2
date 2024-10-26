@@ -53,7 +53,7 @@ public class Ball : MonoBehaviour
     private Collider _ballCollider;
     private float _triggerForce = 0.5f;
     private float _explosionRadius = 5;
-    private float _explosionForce = 100;
+    private float _explosionForce = 10;
     public float dragValue = 0.5f;  // ปรับค่า Drag ตามความเหมาะสม
     public float angularDragValue = 0.5f;  // ปรับค่า Angular Drag
     public bool isCueBall = true;  // ตรวจสอบว่าเป็นลูกบอลสีขาว
@@ -112,7 +112,8 @@ public class Ball : MonoBehaviour
             yield return new WaitForSeconds(explosion.main.duration);
             Destroy(explosion.gameObject);
         }
-       
+
+        _isCountingDown = false;
     }
 
     IEnumerator IShowSpeed()
@@ -185,7 +186,7 @@ public class Ball : MonoBehaviour
         if (TornadoEffect != null)
         {
             ParticleSystem tornadoEffect = Instantiate(TornadoEffect);
-            tornadoEffect.transform.position = transform.position;
+            tornadoEffect.transform.position = ball.transform.position;
             
             activeEffects["Tornado"] = tornadoEffect;
             tornadoEffect.Play();
@@ -448,12 +449,12 @@ public class Ball : MonoBehaviour
             other.gameObject.SetActive(false);
             StartCoroutine(CountdownAndExplode());
         }
-        if (other.CompareTag("Speed"))
+        if (other.CompareTag("Speed") && !isCountSpeed)
         {
             other.gameObject.SetActive(false);
             StartCoroutine(IShowSpeed());
         }
-        if (other.CompareTag("Heavy"))
+        if (other.CompareTag("Heavy") && !isCountHeavy)
         {
             other.gameObject.SetActive(false);
             StartCoroutine(HeavyBall());
@@ -464,7 +465,7 @@ public class Ball : MonoBehaviour
             StartCoroutine(FreezeRandomBalls());
         }
 
-        if (other.CompareTag("Tornado"))
+        if (other.CompareTag("Tornado") && !isCountTornado)
         {
             other.gameObject.SetActive(false);
             StartCoroutine(FireTornado());
