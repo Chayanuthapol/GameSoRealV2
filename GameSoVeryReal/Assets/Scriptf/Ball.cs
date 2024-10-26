@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Ball : MonoBehaviour
@@ -57,7 +58,20 @@ public class Ball : MonoBehaviour
     public float dragValue = 0.5f;  // ปรับค่า Drag ตามความเหมาะสม
     public float angularDragValue = 0.5f;  // ปรับค่า Angular Drag
     public bool isCueBall = true;  // ตรวจสอบว่าเป็นลูกบอลสีขาว
-    private bool isMouseReleased = false; 
+    private bool isMouseReleased = false;
+
+    
+
+    private AudioSource strikesound;
+    public AudioSource dropsound;
+    
+    public AudioSource explosionsound;
+    public AudioSource freezesound;
+    public AudioSource heavysound;
+    public AudioSource slipsound;
+    public AudioSource speedsound;
+    public AudioSource stickysound;
+    public AudioSource tornadosound;
     
     private Dictionary<string, ParticleSystem> activeEffects = new Dictionary<string, ParticleSystem>();
 
@@ -81,6 +95,12 @@ public class Ball : MonoBehaviour
         
         // หา BilliardsManager เพื่อเรียกใช้เมื่อลูกบอลลงหลุม
         billiardsManager = FindObjectOfType<BilliardsManager>();
+
+        strikesound = GetComponent<AudioSource>();
+
+        
+        
+
     }
 
     IEnumerator DelayPlay()
@@ -96,6 +116,10 @@ public class Ball : MonoBehaviour
     {
         _isCountingDown = true;
         var surroundingObjects = Physics.OverlapSphere(transform.position, _explosionRadius);
+        if (explosionsound != null)
+        {
+            explosionsound.Play(); // Play explosion sound
+        }
 
         // Countdown from 3 to 1
         for (int i = (int)countdownTime; i > 0; i--)
@@ -129,6 +153,12 @@ public class Ball : MonoBehaviour
         isCountSpeed = true;
         float originalSpeed = rb.velocity.magnitude;
         rb.velocity *= 1.5f;
+        
+        if (speedsound != null)
+        {
+            speedsound.Play(); // Play speed sound
+        }
+        
         if (SpeedEffect != null)
         {
             ParticleSystem speedEffect = Instantiate(SpeedEffect);
@@ -169,6 +199,11 @@ public class Ball : MonoBehaviour
             heavyEffect.transform.rotation = transform.rotation;
             activeEffects["Heavy"] = heavyEffect;
             heavyEffect.Play();
+            
+            if (heavysound != null)
+            {
+                heavysound.Play(); // Play heavy sound
+            }
 
             for (int i = (int)countHeavy; i > 0; i--)
             {
@@ -191,6 +226,12 @@ public class Ball : MonoBehaviour
     IEnumerator FireTornado()
     {
         isCountTornado = true;
+        
+        if (tornadosound != null)
+        {
+            tornadosound.Play(); // Play tornado sound
+        }
+        
         if (TornadoEffect != null)
         {
             ParticleSystem tornadoEffect = Instantiate(TornadoEffect);
@@ -217,6 +258,11 @@ public class Ball : MonoBehaviour
     }
     IEnumerator FreezeRandomBalls()
     {
+        if (freezesound != null)
+        {
+            freezesound.Play(); // Play freeze sound
+        }
+        
         Ball[] allBalls = FindObjectsOfType<Ball>();
         List<Ball> coloredBalls = new List<Ball>();
         foreach (Ball b in allBalls)
@@ -280,6 +326,12 @@ public class Ball : MonoBehaviour
     IEnumerator SlipperyEffect()
     {
         isCountSlip = true;
+        
+        if (slipsound != null)
+        {
+            slipsound.Play(); // Play slippery sound
+        }
+        
         GameObject floor = GameObject.FindGameObjectWithTag("Floor");
         
         if (floor != null)
@@ -309,6 +361,11 @@ public class Ball : MonoBehaviour
     {
         isCountSticky = true;
         GameObject floor = GameObject.FindGameObjectWithTag("Floor");
+        
+        if (stickysound != null)
+        {
+            stickysound.Play(); // Play sticky sound
+        }
         
         if (floor != null)
         {
@@ -406,6 +463,7 @@ public class Ball : MonoBehaviour
     {
         
         rb.AddForce(force, ForceMode.Impulse);
+        strikesound.Play();
     }
 
     public bool IsBallMoving()
@@ -451,43 +509,57 @@ public class Ball : MonoBehaviour
                     billiardsManager.BallPocketed(gameObject, pocketPosition);
                 }
             }
+            
+            if (dropsound != null && dropsound.clip != null)
+            {
+                dropsound.Play(); // เล่นเสียงเมื่อบอลลงหลุม
+            }
         }
+        
+       
         if (other.CompareTag("Bomb") && !_isCountingDown)
         {
             other.gameObject.SetActive(false);
             StartCoroutine(CountdownAndExplode());
+            
         }
         if (other.CompareTag("Speed") && !isCountSpeed)
         {
             other.gameObject.SetActive(false);
             StartCoroutine(IShowSpeed());
+            
         }
         if (other.CompareTag("Heavy") && !isCountHeavy)
         {
             other.gameObject.SetActive(false);
             StartCoroutine(HeavyBall());
+            
         }
         if (other.CompareTag("Freeze") && isCueBall)
         {
             other.gameObject.SetActive(false);
             StartCoroutine(FreezeRandomBalls());
+           
         }
 
         if (other.CompareTag("Tornado") && !isCountTornado)
         {
             other.gameObject.SetActive(false);
             StartCoroutine(FireTornado());
+            
         }
         if (other.CompareTag("Slip") && !isCountSlip)
         {
             other.gameObject.SetActive(false);
             StartCoroutine(SlipperyEffect());
+            
         }
 
         if (other.CompareTag("Sticky") && !isCountSticky)
         {
             other.gameObject.SetActive(false);
             StartCoroutine(StickyEffect());
+            
         }
         // if (other.CompareTag("Bouncy"))
         // {
