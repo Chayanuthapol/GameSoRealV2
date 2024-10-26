@@ -505,6 +505,8 @@ MonoBehaviour:
   rb: {fileID: 0}
   dragValue: 0.3
   angularDragValue: 0.5
+  frozenMaterial: {fileID: 0}
+  isWhiteBall: 0
 --- !u!135 &103888796
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1021,6 +1023,8 @@ MonoBehaviour:
   rb: {fileID: 0}
   dragValue: 0.3
   angularDragValue: 0.5
+  frozenMaterial: {fileID: 0}
+  isWhiteBall: 0
 --- !u!135 &136266856
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -6432,6 +6436,8 @@ MonoBehaviour:
   rb: {fileID: 0}
   dragValue: 0.3
   angularDragValue: 0.5
+  frozenMaterial: {fileID: 0}
+  isWhiteBall: 0
 --- !u!135 &355227997
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -7310,6 +7316,8 @@ MonoBehaviour:
   rb: {fileID: 0}
   dragValue: 0.3
   angularDragValue: 0.5
+  frozenMaterial: {fileID: 0}
+  isWhiteBall: 0
 --- !u!135 &569263113
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -7698,6 +7706,8 @@ MonoBehaviour:
   rb: {fileID: 0}
   dragValue: 0.3
   angularDragValue: 0.5
+  frozenMaterial: {fileID: 0}
+  isWhiteBall: 0
 --- !u!135 &643180909
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -8826,6 +8836,8 @@ MonoBehaviour:
   rb: {fileID: 0}
   dragValue: 0.3
   angularDragValue: 0.5
+  frozenMaterial: {fileID: 0}
+  isWhiteBall: 0
 --- !u!135 &908290683
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -14117,18 +14129,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bed19be115be6847a1d8d47027b012e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  frozenMaterial: {fileID: 0}
+  FreezeEffect: {fileID: 0}
+  slipperyMaterial: {fileID: 0}
+  stickyMaterial: {fileID: 0}
+  slipperyDragMultiplier: 0.1
+  stickyDragMultiplier: 5
   rb: {fileID: 1851135987}
   isMoving: 0
   cue: {fileID: 1851135986}
   ball: {fileID: 922609587}
   aimLineRenderer: {fileID: 1302147958}
   ballStopThreshold: 0.3
+  whiteball: {fileID: 0}
   explosionEffect: {fileID: 1801650530}
+  SpeedEffect: {fileID: 0}
+  BounceEffect: {fileID: 0}
+  HeavyEffect: {fileID: 0}
+  TornadoEffect: {fileID: 0}
   countdownTime: 3
+  countSpeed: 3
+  countHeavy: 3
+  countBouncy: 3
+  countTornado: 5
+  countSlip: 3
+  countSticky: 3
   dragValue: 0.3
   angularDragValue: 0.5
   isCueBall: 1
-  strikesound: {fileID: 1851135990}
 --- !u!114 &922609588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14592,7 +14620,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6629797300637803691, guid: 8386560c55226d14ea39a33e4e1b4b6b, type: 3}
+  - {fileID: 2100000, guid: 6e7e3cf3f2265b74fbeb009f622ae0f6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14745,6 +14773,8 @@ MonoBehaviour:
   rb: {fileID: 0}
   dragValue: 0.3
   angularDragValue: 0.5
+  frozenMaterial: {fileID: 0}
+  isWhiteBall: 0
 --- !u!135 &1026415520
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -15107,6 +15137,8 @@ MonoBehaviour:
   rb: {fileID: 0}
   dragValue: 0.3
   angularDragValue: 0.5
+  frozenMaterial: {fileID: 0}
+  isWhiteBall: 0
 --- !u!135 &1093800818
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -15386,6 +15418,8 @@ MonoBehaviour:
   rb: {fileID: 0}
   dragValue: 0.3
   angularDragValue: 0.5
+  frozenMaterial: {fileID: 0}
+  isWhiteBall: 0
 --- !u!135 &1099486963
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -16006,6 +16040,8 @@ MonoBehaviour:
   rb: {fileID: 0}
   dragValue: 0.3
   angularDragValue: 0.5
+  frozenMaterial: {fileID: 0}
+  isWhiteBall: 0
 --- !u!135 &1236603107
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -16689,6 +16725,8 @@ MonoBehaviour:
   rb: {fileID: 0}
   dragValue: 0.3
   angularDragValue: 0.5
+  frozenMaterial: {fileID: 0}
+  isWhiteBall: 0
 --- !u!135 &1309326682
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -17486,6 +17524,7 @@ MonoBehaviour:
   playerScoreText1: {fileID: 854492978}
   playerScoreText2: {fileID: 1496176552}
   turnText: {fileID: 1951968164}
+  winText: {fileID: 0}
   pocketParticle: {fileID: 208117105}
   particleDuration: 2
   cueBallPrefab: {fileID: 922609585}
@@ -17748,6 +17787,8 @@ MonoBehaviour:
   rb: {fileID: 0}
   dragValue: 0.3
   angularDragValue: 0.5
+  frozenMaterial: {fileID: 0}
+  isWhiteBall: 0
 --- !u!135 &1709124007
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -23228,6 +23269,8 @@ MonoBehaviour:
   rb: {fileID: 0}
   dragValue: 0.3
   angularDragValue: 0.5
+  frozenMaterial: {fileID: 0}
+  isWhiteBall: 0
 --- !u!135 &1817515030
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -23999,6 +24042,8 @@ MonoBehaviour:
   rb: {fileID: 0}
   dragValue: 0.3
   angularDragValue: 0.5
+  frozenMaterial: {fileID: 0}
+  isWhiteBall: 0
 --- !u!135 &1901604683
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -24412,6 +24457,8 @@ MonoBehaviour:
   rb: {fileID: 0}
   dragValue: 0.3
   angularDragValue: 0.5
+  frozenMaterial: {fileID: 0}
+  isWhiteBall: 0
 --- !u!135 &1962895634
 SphereCollider:
   m_ObjectHideFlags: 0
