@@ -63,6 +63,7 @@ public class Ball : MonoBehaviour
 
     private void Start()
     {
+        StartCoroutine(DelayPlay());
         rb = GetComponent<Rigidbody>();
         _ballRenderer = GetComponent<Renderer>();
         _ballCollider = GetComponent<Collider>();
@@ -82,7 +83,14 @@ public class Ball : MonoBehaviour
         billiardsManager = FindObjectOfType<BilliardsManager>();
     }
 
-    
+    IEnumerator DelayPlay()
+    {
+        cue.gameObject.SetActive(false); // ซ่อนไม้คิว
+        aimLineRenderer.enabled = false;
+        yield return new WaitForSeconds(4);
+        cue.gameObject.SetActive(true); // แสดงไม้คิว
+        aimLineRenderer.enabled = true; // เปิดใช้งานเส้นทิศทางอีกครั้ง
+    }
 
     IEnumerator CountdownAndExplode()
     {

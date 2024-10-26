@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-
+using System.Collections;
 public class CueController : MonoBehaviour
 {
     [Range(1f, 5f)]
@@ -13,8 +13,17 @@ public class CueController : MonoBehaviour
     private float _mouseStroke;
 
     private bool _active = false;
-   
 
+    private void Start()
+    {
+        StartCoroutine(SwitchCameraAfterDelay());
+    }
+
+    IEnumerator SwitchCameraAfterDelay()
+    {
+        yield return new WaitForSeconds(4);  
+    }
+    
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();

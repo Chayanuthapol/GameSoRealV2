@@ -2,11 +2,13 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class StickController : MonoBehaviour
 {
     public Transform cue; // ตัวไม้คิว
-  
+    public Transform cueStick;
+    
     public Camera mainCamera; // กล้องหลัก
     public float followDistance; // ระยะกล้อง
     public Slider powerSlider; // Slider สำหรับปรับค่าแรง
@@ -23,13 +25,21 @@ public class StickController : MonoBehaviour
     private bool isBallMoving = false;
     private bool isChargingPower = false; // กำลังชาร์จค่าความแรงหรือไม่
 
-
     private void Start()
     {
-        
+        StartCoroutine(DelayPlay());
     }
 
-
+    IEnumerator DelayPlay()
+    {
+        cueStick.gameObject.SetActive(false); // ซ่อนไม้คิว
+        aimLineRenderer.enabled = false;
+        yield return new WaitForSeconds(4);
+        cueStick.gameObject.SetActive(true); // แสดงไม้คิว
+        aimLineRenderer.enabled = true; // เปิดใช้งานเส้นทิศทางอีกครั้ง
+    }
+   
+    
     private void Update()
     {
         

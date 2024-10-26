@@ -8,6 +8,7 @@ public class CameraManeger : MonoBehaviour
     // Start is called before the first frame update
     public CinemachineVirtualCamera[] cameras;
     public CameraManeger cameraManeger;
+    public CinemachineVirtualCamera startcamfirst;
     public CinemachineVirtualCamera camera2;
     public CinemachineVirtualCamera camera3;
     public CinemachineVirtualCamera camera4;
@@ -16,8 +17,17 @@ public class CameraManeger : MonoBehaviour
 
     public CinemachineVirtualCamera startCamera;
     private CinemachineVirtualCamera currentCam;
+
     void Start()
     {
+        currentCam = startcamfirst;
+        StartCoroutine(SwitchCameraAfterDelay());
+
+    }
+
+    IEnumerator SwitchCameraAfterDelay()
+    {
+        yield return new WaitForSeconds(4);  
         currentCam = startCamera;
 
         for (int i = 0; i < cameras.Length; i++)
@@ -30,11 +40,11 @@ public class CameraManeger : MonoBehaviour
             {
                 cameras[i].Priority = 10;
             }
-                    
+
         }
     }
 
-    // Update is called once per frame
+// Update is called once per frame
     void Update()
     {
         // Check if key 1 is pressed
@@ -68,6 +78,11 @@ public class CameraManeger : MonoBehaviour
         {
             Debug.Log("Key 5 pressed");
             cameraManeger.SwitchCamera(cameraManeger.camera5);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            Debug.Log("Key 5 pressed");
+            cameraManeger.SwitchCamera(cameraManeger.startcamfirst);
         }
     }
     public void SwitchCamera(CinemachineVirtualCamera newCam)
