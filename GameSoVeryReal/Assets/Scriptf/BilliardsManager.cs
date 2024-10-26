@@ -10,7 +10,8 @@ public class BilliardsManager : MonoBehaviour
     private int currentPlayer = 0; // ผู้เล่นปัจจุบัน (0 หรือ 1)
     private Ball Ball;
     public static BilliardsManager Instance;
-
+    public int WinScore;
+    
     // อ้างอิง UI
     public TextMeshProUGUI playerScoreText1; // Text แสดงคะแนนผู้เล่น 1
     public TextMeshProUGUI playerScoreText2; // Text แสดงคะแนนผู้เล่น 2
@@ -24,7 +25,7 @@ public class BilliardsManager : MonoBehaviour
     // Cue Ball and Respawn Point
     public GameObject cueBallPrefab;         // Prefab ของลูกบอลสีขาว
     public Transform cueBallSpawnPoint;      // จุดที่ใช้ spawn ลูกบอลสีขาว
-
+    
     private void Start()
     {
         
@@ -115,11 +116,11 @@ public class BilliardsManager : MonoBehaviour
         playerScoreText2.text = "Player 2: " + playerScores[1];
 
         // ตรวจสอบว่าผู้เล่นคนใดมีคะแนนครบ 8
-        if (playerScores[0] >= 8)
+        if (playerScores[0] >= WinScore)
         {
             ShowWinMessage(1); // ผู้เล่น 1 ชนะ
         }
-        else if (playerScores[1] >= 8)
+        else if (playerScores[1] >= WinScore)
         {
             ShowWinMessage(2); // ผู้เล่น 2 ชนะ
         }
