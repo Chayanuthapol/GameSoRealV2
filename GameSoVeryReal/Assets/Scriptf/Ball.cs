@@ -463,7 +463,11 @@ public class Ball : MonoBehaviour
     {
         
         rb.AddForce(force, ForceMode.Impulse);
-        strikesound.Play();
+        if (Time.timeScale == 1)
+        {
+            strikesound.Play();
+        }
+        
     }
 
     public bool IsBallMoving()
