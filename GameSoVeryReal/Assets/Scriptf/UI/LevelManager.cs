@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class LevelManager : PauseMenu
 {
     public string sceneName;
+    public string sceneName2;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,4 +24,11 @@ public class LevelManager : PauseMenu
         Time.timeScale = 1.0f;
         GameisPaused = false;
     }
+    public void ChangeScene2()
+    {
+        SceneManager.LoadScene(sceneName2);   
+        Time.timeScale = 1.0f;
+        GameisPaused = false;
+    }
+    
 }
