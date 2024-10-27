@@ -335,7 +335,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3.5077, y: -79}
+  m_AnchoredPosition: {x: 3.5077, y: -54.10001}
   m_SizeDelta: {x: 292.785, y: 59.6236}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &412619238
@@ -870,7 +870,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3.5077, y: 1.1}
+  m_AnchoredPosition: {x: 3.5077, y: 26}
   m_SizeDelta: {x: 292.785, y: 59.6236}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1154391004
@@ -1269,7 +1269,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -649, y: -40}
+  m_AnchoredPosition: {x: -649, y: -19}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1387470172
@@ -1292,9 +1292,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Billiards
-
-    Beyond the feel'
+  m_text: 69 Ball Pool
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1757,7 +1755,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -341, y: -183}
+  m_AnchoredPosition: {x: -341, y: -158}
   m_SizeDelta: {x: 78.3004, y: 78.3004}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1847443136
@@ -1891,7 +1889,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3.5077, y: -169}
+  m_AnchoredPosition: {x: 3.5077, y: -134}
   m_SizeDelta: {x: 292.785, y: 59.6236}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1982147193
