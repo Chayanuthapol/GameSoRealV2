@@ -60925,7 +60925,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cue: {fileID: 1851135986}
-  cueStick: {fileID: 0}
+  cueStick: {fileID: 1851135986}
   mainCamera: {fileID: 963194227}
   followDistance: 11
   powerSlider: {fileID: 468008754}
