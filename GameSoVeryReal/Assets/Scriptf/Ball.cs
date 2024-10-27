@@ -116,10 +116,7 @@ public class Ball : MonoBehaviour
     {
         _isCountingDown = true;
         var surroundingObjects = Physics.OverlapSphere(transform.position, _explosionRadius);
-        if (explosionsound != null)
-        {
-            explosionsound.Play(); // Play explosion sound
-        }
+        
 
         // Countdown from 3 to 1
         for (int i = (int)countdownTime; i > 0; i--)
@@ -133,6 +130,10 @@ public class Ball : MonoBehaviour
             var rb = obj.GetComponent<Rigidbody>();
             if (rb == null) continue;
             rb.AddExplosionForce(_explosionForce, transform.position, _explosionRadius);
+        }
+        if (explosionsound != null)
+        {
+            explosionsound.Play(); // Play explosion sound
         }
         if (explosionEffect != null)
         {
@@ -151,8 +152,8 @@ public class Ball : MonoBehaviour
     IEnumerator IShowSpeed()
     {
         isCountSpeed = true;
-        float originalSpeed = rb.velocity.magnitude;
-        rb.velocity *= 1.5f;
+        float originalSpeed = 15f * rb.velocity.magnitude;
+        rb.velocity = originalSpeed * rb.velocity.normalized;
         
         if (speedsound != null)
         {
@@ -162,8 +163,9 @@ public class Ball : MonoBehaviour
         if (SpeedEffect != null)
         {
             ParticleSystem speedEffect = Instantiate(SpeedEffect);
-            speedEffect.transform.position = ball.transform.position;
-            speedEffect.transform.rotation = ball.transform.rotation;
+            speedEffect.transform.SetParent(transform,true);
+            speedEffect.transform.localPosition = Vector3.zero;
+            speedEffect.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
             activeEffects["Speed"] = speedEffect;
             speedEffect.Play();
 
@@ -172,12 +174,11 @@ public class Ball : MonoBehaviour
             {
                 yield return new WaitForSeconds(1f);
             }
-
-            rb.velocity = originalSpeed * rb.velocity.normalized;
-
+            
             // Cleanup
             if (speedEffect != null)
             {
+                speedEffect.transform.SetParent(null);
                 Destroy(speedEffect.gameObject);
                 activeEffects.Remove("Speed");
             }
