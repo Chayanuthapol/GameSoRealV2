@@ -43,6 +43,7 @@ public class Ball : MonoBehaviour
     public float countTornado = 5f;
     public float countSlip = 3f;
     public float countSticky = 3f;
+    public float countFreeze = 5f;
     private bool _isCountingDown = false;
     private bool isCountSpeed = false;
     private bool isCountHeavy = false;  
@@ -60,7 +61,7 @@ public class Ball : MonoBehaviour
     public bool isCueBall = true;  // ตรวจสอบว่าเป็นลูกบอลสีขาว
     private bool isMouseReleased = false;
 
-    
+    private PowerUpManager _powerUpManager;
 
     private AudioSource strikesound;
     public AudioSource dropsound;
@@ -85,6 +86,7 @@ public class Ball : MonoBehaviour
         rb.angularDrag = angularDragValue;
         originalMaterial = _ballRenderer.material;
         originalRigidbody = rb;
+        _powerUpManager = FindObjectOfType<PowerUpManager>();
 
         GameObject floor = GameObject.FindGameObjectWithTag("Floor");
         if (floor != null)
@@ -97,8 +99,6 @@ public class Ball : MonoBehaviour
         billiardsManager = FindObjectOfType<BilliardsManager>();
 
         strikesound = GetComponent<AudioSource>();
-
-        
         
 
     }
@@ -116,7 +116,10 @@ public class Ball : MonoBehaviour
     {
         _isCountingDown = true;
         var surroundingObjects = Physics.OverlapSphere(transform.position, _explosionRadius);
-        
+        if (_powerUpManager != null)
+        {
+            _powerUpManager.ShowPowerUp("Bomb", countdownTime);
+        }
 
         // Countdown from 3 to 1
         for (int i = (int)countdownTime; i > 0; i--)
@@ -154,7 +157,10 @@ public class Ball : MonoBehaviour
         isCountSpeed = true;
         float originalSpeed = 15f * rb.velocity.magnitude;
         rb.velocity = originalSpeed * rb.velocity.normalized;
-        
+        if (_powerUpManager != null)
+        {
+            _powerUpManager.ShowPowerUp("Speed", countSpeed);
+        }
         if (speedsound != null)
         {
             speedsound.Play(); // Play speed sound
@@ -192,6 +198,10 @@ public class Ball : MonoBehaviour
         isCountHeavy = true;
         float originalMass = rb.mass;
         rb.mass *= 10000;
+        if (_powerUpManager != null)
+        {
+            _powerUpManager.ShowPowerUp("Heavy", countHeavy);
+        }
         
         if (HeavyEffect != null)
         {
@@ -232,7 +242,10 @@ public class Ball : MonoBehaviour
         {
             tornadosound.Play(); // Play tornado sound
         }
-        
+        if (_powerUpManager!= null)
+        {
+            _powerUpManager.ShowPowerUp("Tornado", countTornado);
+        }
         if (TornadoEffect != null)
         {
             ParticleSystem tornadoEffect = Instantiate(TornadoEffect);
@@ -283,7 +296,14 @@ public class Ball : MonoBehaviour
             frozenBalls.Add(selectedBall);
             StartCoroutine(FreezeBall(selectedBall));
         }
-        yield return new WaitForSeconds(5f);
+        if (_powerUpManager != null)
+        {
+           _powerUpManager.ShowPowerUp("Freeze",countFreeze);
+        }
+        for (int i = (int)countFreeze; i > 0; i--)
+        {
+            yield return new WaitForSeconds(1f);
+        }
         foreach (Ball frozenBall in frozenBalls)
         {
             if (frozenBall != null)
@@ -306,7 +326,14 @@ public class Ball : MonoBehaviour
         ball.rb.velocity = Vector3.zero;
         ball.rb.angularVelocity = Vector3.zero;
         ball.rb.constraints = RigidbodyConstraints.FreezeAll;
-        yield return new WaitForSeconds(5f);
+        if (_powerUpManager != null)
+        {
+            _powerUpManager.ShowPowerUp("Freeze",countFreeze);
+        }
+        for (int i = (int)countFreeze; i > 0; i--)
+        {
+            yield return new WaitForSeconds(1f);
+        }
         if (ball != null)
         {
             UnfreezeBall(ball);
@@ -327,7 +354,10 @@ public class Ball : MonoBehaviour
     IEnumerator SlipperyEffect()
     {
         isCountSlip = true;
-        
+        if (_powerUpManager != null)
+        {
+           _powerUpManager.ShowPowerUp("Slip", countSlip);
+        }
         if (slipsound != null)
         {
             slipsound.Play(); // Play slippery sound
@@ -362,7 +392,10 @@ public class Ball : MonoBehaviour
     {
         isCountSticky = true;
         GameObject floor = GameObject.FindGameObjectWithTag("Floor");
-        
+        if (_powerUpManager != null)
+        {
+            _powerUpManager.ShowPowerUp("Sticky", countSticky);
+        }
         if (stickysound != null)
         {
             stickysound.Play(); // Play sticky sound
