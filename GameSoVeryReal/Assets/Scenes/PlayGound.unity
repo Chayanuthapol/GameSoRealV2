@@ -465,7 +465,7 @@ MonoBehaviour:
   - {fileID: 106418400903281908, guid: 178faac414e9921489a1c6dd3ce740f6, type: 3}
   - {fileID: 3972350202283221874, guid: 0d64d5f163a9eaa47820af86281fc330, type: 3}
   spawnInterval: 0.01
-  maxPowerUpsOnTable: 6
+  maxPowerUpsOnTable: 15
   tableLength: 15
   tableWidth: 7.5
   spawnHeightOffset: 0.4
@@ -46379,7 +46379,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 763026203}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.37470946, y: -0.5996606, z: 0.37470946, w: 0.5996606}
+  m_LocalRotation: {x: 0.3747095, y: -0.59966063, z: 0.3747095, w: 0.59966063}
   m_LocalPosition: {x: 17.15, y: 38.359997, z: -5.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -85131,7 +85131,7 @@ MonoBehaviour:
   stickyMaterial: {fileID: 2100000, guid: 32c66db19e63a1c44bfc5e3ca59d8c1e, type: 2}
   slipperyDragMultiplier: 0.01
   stickyDragMultiplier: 10
-  rb: {fileID: 0}
+  rb: {fileID: 1525507262}
   isMoving: 0
   cue: {fileID: 2065023109}
   ball: {fileID: 1525507259}
@@ -119014,7 +119014,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cue: {fileID: 2065023109}
-  cueStick: {fileID: 2065023109}
+  cueStick: {fileID: 992072535}
   mainCamera: {fileID: 763026204}
   followDistance: 11
   powerSlider: {fileID: 95435727}
