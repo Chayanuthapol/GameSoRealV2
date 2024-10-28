@@ -149,15 +149,15 @@ RectTransform:
   m_GameObject: {fileID: 29850837}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 451087161}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.5, y: 5.4}
-  m_SizeDelta: {x: 340.9809, y: 377.3983}
+  m_AnchoredPosition: {x: 2.5, y: -0.9}
+  m_SizeDelta: {x: 1900, y: 1058.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &29850839
 MonoBehaviour:
@@ -179,7 +179,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 521d6d67b8ad60343bcf1223e547a82a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ced5b45311b508d479a4fb98d1ca85ea, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1292,9 +1292,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Billiards
-
-    Beyond the feel'
+  m_text: 69 Ball Pool
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2038,7 +2036,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 146.72, y: 167.72}
+  m_AnchoredPosition: {x: -324.6, y: 167.72}
   m_SizeDelta: {x: 43.461, y: 43.461}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2050617457
